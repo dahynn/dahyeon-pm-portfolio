@@ -6,9 +6,9 @@ html { scroll-snap-type: y proximity; }
 .personal-strengths ol { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
 .personal-strengths li { display: grid; grid-template-columns: 3.2rem minmax(0,1fr); gap: .9rem; align-items: center; padding-block: .55rem; border-bottom: 1px solid #e6e7e9; }
 .strength-marker { display: flex; align-items: center; justify-content: center; }
-.talent-symbol { display:inline-grid; place-items:center; flex:none; width:3rem; height:3rem; border:1px solid #9bbbe1; border-radius:50%; background:#edf4fc; color:var(--navy); font-size:.7rem; font-weight:800; letter-spacing:.04em; vertical-align:middle; }
-.talent-symbol-creative-thinking { border-color:#7fc99e; background:#edf8f1; color:#007c39; }
-.talent-symbol-sense-of-purpose { border-color:#efc55d; background:#fff8e8; color:#9a6700; }
+.talent-symbol { display:inline-grid; place-items:center; flex:none; width:3rem; height:3rem; border:1px solid #9bbbe1; border-radius:50%; background:#edf4fc; color:var(--navy); vertical-align:middle; }
+.talent-symbol-communication { border-color:#7fc99e; background:#edf8f1; color:#007c39; }
+.talent-symbol-creativity { border-color:#efc55d; background:#fff8e8; color:#9a6700; }
 .strength-number { font-size: .8rem; color: #b2501b; padding-top: .2rem; }
 .personal-strengths h3 { margin: 0; font-size: clamp(1rem,1.35vw,1.15rem); line-height: 1.45; letter-spacing: -.025em; word-break: keep-all; }
 .personal-strengths p { font-size: .9rem; line-height: 1.6; margin: .24rem 0 0; color: #565c65; }
@@ -373,6 +373,7 @@ html { scroll-snap-type: y proximity; }
     object-fit: contain;
   }
 }
+
 .case-hero-media { order: 1; position: relative; min-width: 0; }
 .project-hero-mock { margin: 0; overflow: hidden; border-radius: 1.2rem; background: #faf9f7; box-shadow: 0 2.2rem 5rem #0008; }
 .project-hero-mock img { display: block; width: 100%; height: auto; }
@@ -1137,3 +1138,16 @@ html { scroll-snap-type: y proximity; }
     font-size: .7rem;
   }
 }
+
+/* Project Store의 기존 구성은 유지하고, 주황 강조만 현대 팔레트로 교체합니다. */
+.project-store { --store-accent: #0a4b9e; }
+.project-store .store-kicker { color: #0a4b9e; }
+.project-store .store-item { border-top-color: var(--store-accent); }
+.project-store .store-item:nth-child(2) { --store-accent: #009a44; }
+.project-store .store-item:nth-child(3) { --store-accent: #ffb81c; }
+.project-store .store-item:nth-child(4) { --store-accent: #0a4b9e; border-bottom-color: var(--store-accent); }
+.project-store .store-number,
+.project-store .store-brief-label,
+.project-store .store-scroll,
+.project-store .store-scroll svg { color: var(--store-accent); }
+.project-store .store-scroll:hover { background: color-mix(in srgb, var(--store-accent) 12%, white); color: var(--store-accent); }

@@ -849,8 +849,8 @@ a { color:inherit; text-decoration:none; }
   left:0;
   width:2rem;
   height:calc(24px + 2.75rem);
-  border-bottom:2px solid var(--orange);
-  border-left:2px solid var(--orange);
+  border-bottom:2px solid var(--hyundai-yellow);
+  border-left:2px solid var(--hyundai-yellow);
   border-bottom-left-radius:1rem;
   content:"";
 }
@@ -859,7 +859,7 @@ a { color:inherit; text-decoration:none; }
   width:16rem;
   max-width:100%;
   height:auto;
-  margin:0 0 0 -2.6rem;
+  margin:0 0 0 1.7rem;
 }
 .journey-destination p {
   margin:.25rem 0 0;
@@ -917,6 +917,7 @@ a { color:inherit; text-decoration:none; }
     flex:0 0 auto;
     width:14rem;
     margin-left:-2.275rem;
+    transform:translateX(2.75rem);
   }
   .journey-destination p { margin:0; }
 }
@@ -1517,36 +1518,43 @@ a { color:inherit; text-decoration:none; }
   margin:7px 0 0 clamp(18px,5vw,78px);
 }
 #introduction .profile-details>h1 em { color:var(--orange); }
+#introduction .profile-details>h1 em.title-blue { color:#0a4b9e; }
 #introduction .personal-strengths {
   max-width:none;
   margin:clamp(30px,4.2vh,46px) 0 clamp(28px,3.6vh,40px);
-  padding:10px;
+  padding:0;
   border:0;
-  border-radius:16px;
-  background:#1d1d1f;
+  border-radius:0;
+  background:transparent;
 }
 #introduction .personal-strengths ol {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:0;
+  gap:10px;
   margin:0;
   padding:0;
 }
 #introduction .personal-strengths li {
-  display:grid;
-  grid-template-columns:34px minmax(0,1fr);
-  align-items:center;
-  gap:12px;
-  min-height:104px;
-  padding:14px clamp(14px,1.7vw,24px);
+  position:relative;
+  display:block;
+  min-height:174px;
+  padding:clamp(20px,2vw,30px);
   border:0;
-  border-left:1px solid rgba(255,255,255,.16);
+  border-radius:0;
+  overflow:hidden;
 }
-#introduction .personal-strengths li:first-child { padding-left:clamp(14px,1.7vw,24px); border-left:0; }
-#introduction .strength-marker { margin:0; }
-#introduction .talent-symbol { width:30px; height:30px; }
-#introduction .personal-strengths h3 { margin:0; color:#fff; font-size:clamp(13px,1.05vw,15px); font-weight:780; letter-spacing:-.055em; line-height:1.35; }
-#introduction .personal-strengths p { margin:5px 0 0; color:#c9cbd0; font-size:clamp(10px,.8vw,11px); font-weight:560; letter-spacing:-.04em; line-height:1.55; word-break:keep-all; }
+#introduction .personal-strengths li:first-child { padding-left:clamp(14px,1.7vw,24px); }
+#introduction .personal-strengths li:nth-child(1) { background:#ffb81c; }
+#introduction .personal-strengths li:nth-child(2) { background:#009a44; }
+#introduction .personal-strengths li:nth-child(3) { background:#0a4b9e; }
+#introduction .personal-strengths li::after { position:absolute; left:clamp(20px,2vw,30px); bottom:clamp(12px,1.3vw,20px); z-index:0; color:rgba(255,255,255,.34); content:attr(data-word); font-size:clamp(25px,2.45vw,42px); font-weight:300; letter-spacing:-.075em; line-height:1; }
+#introduction .strength-marker { position:absolute; right:clamp(20px,2vw,30px); bottom:clamp(18px,1.7vw,26px); z-index:1; margin:0; }
+#introduction .talent-symbol { display:grid; place-items:center; width:52px; height:52px; border:0; border-radius:0; background:transparent; }
+#introduction .talent-symbol img { display:block; width:100%; height:100%; object-fit:contain; }
+#introduction .personal-strengths li>div:last-child { position:relative; z-index:1; }
+#introduction .personal-strengths h3 { margin:0; color:#fff; font-size:clamp(26px,2.25vw,36px); font-weight:780; letter-spacing:-.08em; line-height:1.1; }
+#introduction .personal-strengths li:nth-child(2) h3 { font-size:clamp(24px,2vw,32px); }
+#introduction .personal-strengths p { max-width:260px; margin:11px 0 0; color:rgba(255,255,255,.9); font-size:clamp(11px,.9vw,13px); font-weight:620; letter-spacing:-.05em; line-height:1.55; word-break:keep-all; }
 #introduction .cover-secondary {
   display:grid;
   grid-template-columns:minmax(0,1.05fr) minmax(290px,.95fr);
@@ -1580,7 +1588,7 @@ a { color:inherit; text-decoration:none; }
 @media (max-width:900px) and (min-width:761px) {
   #introduction.cover-page { grid-template-columns:190px minmax(0,1fr); column-gap:34px; padding-inline:38px; }
   #introduction .profile-details>h1 { font-size:30px; }
-  #introduction .personal-strengths li { min-height:128px; padding-inline:14px; }
+  #introduction .personal-strengths li { min-height:174px; padding-inline:14px; }
   #introduction .personal-strengths p { font-size:10px; }
   #introduction .cover-info-panel.journey-awards { padding-right:18px; }
   #introduction .cover-info-panel.journey-skills { padding-left:18px; }
@@ -1598,10 +1606,11 @@ a { color:inherit; text-decoration:none; }
   #introduction .profile-details { padding:36px 0 0; }
   #introduction .profile-details>h1 { font-size:30px; }
   #introduction .profile-details>h1 .cover-title-follow { margin-left:25px; }
-  #introduction .personal-strengths { margin:30px 0; padding:8px; }
+  #introduction .personal-strengths { margin:30px 0; padding:0; }
   #introduction .personal-strengths ol { grid-template-columns:1fr; }
-  #introduction .personal-strengths li,#introduction .personal-strengths li:first-child { display:grid; grid-template-columns:34px minmax(0,1fr); min-height:0; gap:12px; padding:14px; border-left:0; border-top:1px solid rgba(255,255,255,.16); }
-  #introduction .personal-strengths li:first-child { border-top:0; }
+  #introduction .personal-strengths li,#introduction .personal-strengths li:first-child { display:block; min-height:152px; padding:20px; border-left:0; border-top:0; }
+  #introduction .personal-strengths li::after { left:20px; bottom:14px; font-size:38px; }
+  #introduction .strength-marker { right:20px; bottom:18px; }
   #introduction .strength-marker { margin:0; }
   #introduction .cover-secondary { grid-template-columns:1fr; }
   #introduction .cover-info-panel.journey-awards { padding-right:0; }
@@ -1609,3 +1618,36 @@ a { color:inherit; text-decoration:none; }
   #introduction .brand-logo { top:15px; right:24px; width:116px; height:34px; }
   #introduction .page-number { top:47px; right:24px; }
 }
+
+/* 현대엘리베이터 팔레트로 여정의 진행색을 통일합니다. */
+#journey .journey-item { --line-color:#dbe9f6; }
+#journey .journey-item:nth-child(2) { --line-color:#b9d9f1; }
+#journey .journey-item:nth-child(3) { --line-color:#87bfe8; }
+#journey .journey-item:nth-child(4) { --line-color:#4f91d2; }
+#journey .journey-item:nth-child(5) { --line-color:#0a4b9e; }
+#journey .journey-item:nth-child(6) { --line-color:#087e70; }
+#journey .journey-item:nth-child(7) { --line-color:#009a44; }
+#journey .journey-item:nth-child(8) { --line-color:#70b92f; }
+#journey .journey-item:nth-child(9) { --line-color:#ffb81c; }
+#journey .journey-track::before { background:linear-gradient(to bottom,#dbe9f6 0%,#4f91d2 40%,#009a44 72%,#ffb81c 100%) !important; }
+#journey .journey-item::after,
+#journey .journey-item:nth-child(odd)::after,
+#journey .journey-item:nth-child(even)::after { background:var(--line-color); }
+#journey .journey-date { color:#0a4b9e !important; }
+#journey .journey-dot.default-node { color:#0a4b9e; background:#0a4b9e; }
+#journey .journey-dot.education-node { color:#4f91d2; background:#4f91d2; }
+#journey .journey-dot.ssafy-node { color:#009a44; background:#009a44; }
+#journey .journey-dot.finance-campus-node { color:#ffb81c; background:#ffb81c; }
+#journey .education-study::before,
+#journey .exchange-study::before,
+#journey .dongguk-university::before { background:#dbe9f6; }
+#journey .ssafy-campus::before { background:#cdeedb; }
+#journey .finance-campus::before { background:#ffe184; }
+
+/* Project Store는 기존 레이아웃을 유지하고 구분선만 브랜드 색으로 바꿉니다. */
+.project-store .store-item:nth-child(2)::before { background:#0a4b9e; }
+.project-store .store-item:nth-child(3)::before { background:#009a44; }
+.project-store .store-item:nth-child(4)::before { background:#ffb81c; }
+
+/* 영문 워터마크는 세 카드에서 같은 크기로 맞춥니다. */
+#introduction .personal-strengths li::after { font-size:clamp(22px,1.75vw,30px); }

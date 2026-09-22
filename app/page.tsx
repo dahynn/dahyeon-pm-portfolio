@@ -101,7 +101,7 @@ export default function Home() {
           </section>
         </div>
         <div className="profile-details">
-          <h1 id="portfolio-title"><span>사용자와 운영자의 <em>흐름</em>을</span><span className="cover-title-follow"><em>끝까지</em> 설계하는 PM</span></h1>
+          <h1 id="portfolio-title"><span>보이는 <em className="title-blue">경험</em>부터 보이지 않는 <em className="title-blue">운영</em>까지</span><span className="cover-title-follow"><em>끝까지</em> 설계하는 <em className="title-blue">PM</em></span></h1>
           <PersonalStrengths />
           <div className="cover-secondary">
             <aside className="cover-info-panel journey-awards" aria-labelledby="cover-awards-title">
