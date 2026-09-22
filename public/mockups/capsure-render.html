@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CapSure Mockup Renderer</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+      body {
+        background: #f2f1ef;
+        color: #111317;
+        font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      .canvas {
+        position: relative;
+        width: 1600px;
+        height: 1000px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 88%, rgba(19, 32, 53, .12), transparent 38%),
+          linear-gradient(145deg, #faf9f7 0%, #f1f0ee 64%, #e9e8e5 100%);
+      }
+      body.transparent,
+      body.transparent .canvas { background: transparent; }
+      body.transparent .canvas::before { display: none; }
+      body.dark,
+      body.dark .canvas { background: #1c1c1c; }
+      body.dark .canvas::before { display: none; }
+      .canvas::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(0, 0, 0, .035) .7px, transparent .7px);
+        background-size: 5px 5px;
+        opacity: .42;
+      }
+      .shadow {
+        position: absolute;
+        height: 38px;
+        border-radius: 999px;
+        background: rgba(4, 10, 18, .22);
+        filter: blur(19px);
+      }
+      .phone {
+        position: absolute;
+        width: 390px;
+        height: 844px;
+        padding: 10px;
+        border-radius: 58px;
+        background: linear-gradient(142deg, #f8fafc 0%, #aeb4bd 12%, #454a51 28%, #e5e8ec 51%, #747a83 74%, #f4f6f8 91%, #626870 100%);
+        box-shadow:
+          0 32px 74px rgba(3, 8, 15, .24),
+          inset 0 0 0 2px rgba(255,255,255,.72),
+          inset 0 0 0 5px rgba(7,10,14,.72);
+        transform-origin: center;
+      }
+      .phone::before {
+        content: "";
+        position: absolute;
+        z-index: 5;
+        top: 18px;
+        left: 50%;
+        width: 110px;
+        height: 31px;
+        border-radius: 999px;
+        background: #030405;
+        transform: translateX(-50%);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+      }
+      .phone::after {
+        content: "";
+        position: absolute;
+        z-index: 6;
+        top: 28px;
+        left: calc(50% + 35px);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #0b1c31;
+        box-shadow: inset 0 0 4px #234968;
+      }
+      .screen {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 49px;
+        overflow: hidden;
+      }
+      .side-button {
+        position: absolute;
+        width: 4px;
+        border-radius: 3px;
+        background: linear-gradient(#6f747b, #d9dde2, #5d6269);
+      }
+      .side-button.left { left: -3px; }
+      .side-button.right { right: -3px; }
+      .label {
+        position: absolute;
+        z-index: 20;
+        min-width: 150px;
+        padding: 14px 18px;
+        border: 1px solid rgba(5, 14, 26, .08);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, .88);
+        box-shadow: 0 14px 34px rgba(10, 17, 28, .12);
+        backdrop-filter: blur(14px);
+        font-size: 17px;
+        font-weight: 760;
+        letter-spacing: -.02em;
+      }
+      .label small {
+        display: block;
+        margin-top: 5px;
+        color: #6e737c;
+        font-size: 12px;
+        font-weight: 650;
+      }
+      .label::after {
+        content: "";
+        position: absolute;
+        width: 74px;
+        height: 1px;
+        background: #717781;
+      }
+      .journey .phone:nth-of-type(1) { left: 155px; top: 120px; transform: rotate(-6deg) scale(.82); }
+      .journey .phone:nth-of-type(2) { left: 605px; top: 54px; transform: scale(1.02); z-index: 4; }
+      .journey .phone:nth-of-type(3) { left: 1062px; top: 142px; transform: rotate(6deg) scale(.79); }
+      .journey .shadow:nth-of-type(4) { left: 116px; top: 910px; width: 420px; }
+      .journey .shadow:nth-of-type(5) { left: 590px; top: 928px; width: 435px; }
+      .journey .shadow:nth-of-type(6) { left: 1072px; top: 903px; width: 390px; }
+      .journey .label.a { left: 78px; top: 96px; }
+      .journey .label.a::after { right: -58px; bottom: 18px; transform: rotate(15deg); }
+      .journey .label.b { right: 75px; top: 82px; text-align: right; }
+      .journey .label.b::after { left: -58px; bottom: 18px; transform: rotate(-15deg); }
+
+      .pair .phone:nth-of-type(1) { left: 350px; top: 124px; transform: rotate(-5deg) scale(.92); z-index: 3; }
+      .pair .phone:nth-of-type(2) { left: 815px; top: 64px; transform: rotate(4deg) scale(1.03); z-index: 4; }
+      .pair .shadow:nth-of-type(3) { left: 302px; top: 918px; width: 440px; }
+      .pair .shadow:nth-of-type(4) { left: 800px; top: 934px; width: 440px; }
+      .pair .label.a { left: 125px; top: 278px; }
+      .pair .label.a::after { right: -72px; top: 29px; }
+      .pair .label.b { right: 112px; top: 215px; text-align: right; }
+      .pair .label.b::after { left: -72px; top: 29px; }
+
+      .single .phone { left: 605px; top: 55px; transform: scale(1.04); }
+      .single .shadow { left: 575px; top: 936px; width: 450px; }
+      .single .label { right: 170px; top: 260px; }
+      .single .label::after { left: -74px; top: 28px; }
+
+      .canvas.hero-pair { width: 1280px; height: 1000px; }
+      .hero-pair .phone:nth-of-type(1) {
+        z-index: 3;
+        left: 300px;
+        top: 165px;
+        transform: perspective(1250px) rotateX(4deg) rotateY(-9deg) rotateZ(-18deg) scale(.76);
+      }
+      .hero-pair .phone:nth-of-type(2) {
+        z-index: 4;
+        left: 660px;
+        top: 42px;
+        transform: perspective(1250px) rotateX(2deg) rotateY(8deg) rotateZ(7deg) scale(.94);
+      }
+      .hero-pair .shadow:nth-of-type(3) {
+        left: 270px;
+        top: 875px;
+        width: 430px;
+        transform: rotate(-10deg);
+      }
+      .hero-pair .shadow:nth-of-type(4) {
+        left: 650px;
+        top: 910px;
+        width: 440px;
+        transform: rotate(4deg);
+      }
+    </style>
+  </head>
+  <body>
+    <main id="canvas" class="canvas"></main>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const layout = params.get('layout') || 'journey';
+      if (params.get('transparent') === '1') document.body.classList.add('transparent');
+      if (params.get('background') === 'dark') document.body.classList.add('dark');
+      const canvas = document.querySelector('#canvas');
+      const phone = (src) => `<div class="phone"><span class="side-button left" style="top:145px;height:54px"></span><span class="side-button left" style="top:215px;height:77px"></span><span class="side-button right" style="top:180px;height:92px"></span><img class="screen" src="${src}" alt="" /></div>`;
+
+      if (layout === 'hero') {
+        canvas.classList.add('hero-pair');
+        const heroCoverage = params.get('state') === '2'
+          ? '/assets/capsure-latest-coverages-2selected.png'
+          : '/assets/capsure-latest-coverages.png';
+        canvas.innerHTML = `${phone('/assets/capsure-latest-product-fresh.png')}${phone(heroCoverage)}<span class="shadow"></span><span class="shadow"></span>`;
+      } else if (layout === 'journey') {
+        canvas.classList.add('journey');
+        const journeyCoverage = params.get('state') === '2'
+          ? '/assets/capsure-latest-coverages-2selected.png'
+          : '/assets/capsure-latest-coverages.png';
+        canvas.innerHTML = `${phone(journeyCoverage)}${phone('/assets/capsure-latest-approval.png')}${phone('/assets/capsure-latest-payment.png')}<span class="shadow"></span><span class="shadow"></span><span class="shadow"></span><div class="label a">보장 선택<small>상품과 월 보험료 구성</small></div><div class="label b">결제 상태 확인<small>승인 이후에만 다음 단계로</small></div>`;
+      } else if (layout === 'application') {
+        canvas.classList.add('pair');
+        canvas.innerHTML = `${phone('/assets/capsure-latest-application.png')}${phone('/assets/capsure-latest-approval.png')}<span class="shadow"></span><span class="shadow"></span><div class="label a">고지 입력<small>실제 의료정보는 저장하지 않음</small></div><div class="label b">자동 인수심사<small>판정 상태와 사유를 함께 기록</small></div>`;
+      } else if (layout === 'contract') {
+        canvas.classList.add('pair');
+        canvas.innerHTML = `${phone('/assets/capsure-latest-policy.png')}${phone('/assets/capsure-latest-claim.png')}<span class="shadow"></span><span class="shadow"></span><div class="label a">계약 상태<small>활성 증권과 보장 정보를 확인</small></div><div class="label b">보험금 청구<small>심사 시나리오를 선택해 제출</small></div>`;
+      } else {
+        canvas.classList.add('single');
+        const coverageSource = params.get('state') === '2'
+          ? '/assets/capsure-latest-coverages-2selected.png'
+          : '/assets/capsure-latest-coverages.png';
+        canvas.innerHTML = `${phone(coverageSource)}<span class="shadow"></span><div class="label">보장 구성<small>선택 상태를 한 화면에서 비교</small></div>`;
+      }
+    </script>
+  </body>
+</html>

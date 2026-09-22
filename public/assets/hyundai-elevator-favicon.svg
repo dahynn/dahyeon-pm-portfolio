@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="현대엘리베이터">
+  <circle cx="64" cy="64" r="60" fill="#ffffff" stroke="#d5e1f1" stroke-width="4"/>
+  <polygon points="20,94 58,33 96,94" fill="#ffb81c"/>
+  <polygon points="58,94 88,45 110,94" fill="#009a44"/>
+</svg>
