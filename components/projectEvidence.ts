@@ -16,7 +16,7 @@ export type ProjectPresentation = {
 export const projectEvidence: Record<string, ProjectPresentation> = {
   capsure: {
     team: '5명, 백엔드 3명, 프론트엔드 1명, 인프라 1명',
-    responsibility: 'FE Lead. 상품 선택, 결제, 구독 확정',
+    responsibility: 'FE Lead · Backend. 상품 선택 UI와 결제·계약 복구 흐름',
     contribution: '결제 상태와 계약 효력 설계, 복구 시나리오 검증과 통합',
     stack: ['Java 21', 'Spring Boot 3.5.11', 'MyBatis 3.0.5', 'PostgreSQL', 'React 19', 'Toss Payments SDK 2'],
     nodes: [
@@ -65,8 +65,8 @@ export const projectEvidence: Record<string, ProjectPresentation> = {
   },
   san: {
     team: '7명 · FE 1 · BE 3 · AI 2 · INFRA 1',
-    responsibility: '서버 검색, AI 입력 보호, 작업 상태 관리',
-    contribution: '검색 조건과 결과 검증, 입력 근거와 실패 재시도 흐름 정리',
+    responsibility: '비동기 감사 추적, 로그인 브리지, AI 요약 병렬화',
+    contribution: '요청 맥락 복원, 1회용 Ticket 교환, AI 호출 성능 검증',
     stack: ['Java 21', 'Spring Boot 3.5.14', 'Spring Data JPA', 'PostgreSQL', 'Redis', 'React 18.3', 'TypeScript 5.9'],
     nodes: [
       { name: '대시보드', detail: '검색어·필터·페이지' },
@@ -91,7 +91,7 @@ export const projectEvidence: Record<string, ProjectPresentation> = {
   dasibom: {
     team: '4명 · FE 1 · BE 1 · AI 2',
     responsibility: '서비스 기획·UI/UX, React Native 화면과 카메라·음성·지도·차트 연동',
-    contribution: '민감 미디어 최소수집, 입력·응답 계약과 소유자 조회 경계 정리',
+    contribution: 'React Native 앱 화면과 카메라·음성·지도 흐름',
     stack: ['React Native', 'Spring Boot', 'MySQL', 'AI 분석 API'],
     nodes: [
       { name: '모바일 입력', detail: '얼굴 · 음성 · 설문' },

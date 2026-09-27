@@ -1,9 +1,15 @@
 /* oxlint-disable next/no-img-element -- 사용자 원본 서비스 캡처를 그대로 표시합니다. */
-import { ArrowRight, Check, FileLock2 } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, CircleCheck, CircleX, FileLock2, Layers3 } from 'lucide-react';
 import type { PortfolioStory, StoryVisual } from './portfolioStories';
+import { SanTicketWiggle } from './SanTicketWiggle';
 
 function FlowStep({ number, title, detail, status, tone = '' }: { number: string; title: string; detail: string; status: string; tone?: string }) {
   return <li className={`story-flow-step ${tone}`}><span className="story-step-number">{number}</span><h4>{title}</h4><p>{detail}</p><strong>{status}</strong></li>;
+}
+
+function SentenceLines({ text }: { text: string }) {
+  const sentences = text.match(/.*?(?:[.!?](?=\s|$)|$)/g)?.map((sentence) => sentence.trim()).filter(Boolean) ?? [text];
+  return <>{sentences.map((sentence, index) => <span className="case-sentence-line" key={`${index}-${sentence}`}>{sentence}</span>)}</>;
 }
 
 function PaymentVisual() {
@@ -34,16 +40,38 @@ function DeadlineVisual() {
 
 function RaceVisual() {
   return <div className="story-diagram">
-    <div className="story-visual-label">동시성 제어와 부하 관측 <span>ROUNDY LOAD DASHBOARD</span></div>
-    <figure className="story-observability-capture"><img src="/assets/roundy-load-observability.svg" alt="Roundy 매칭 부하 테스트 관측 대시보드" loading="lazy"/><figcaption>AWS 서울 환경에서 합성 사용자 9,000명을 3회 실행한 관측 기록</figcaption></figure>
-    <ol className="story-event-line"><li><small>현재 상태</small><strong>새 세션 B 배정</strong></li><li><small>늦은 요청</small><strong>이전 세션 정리 요청</strong></li><li><small>대상 세션 불일치</small><strong>현재 세션 B 유지 <Check size={20} aria-hidden="true"/></strong></li></ol>
-    <p className="story-visual-note">인증 소비 → 큐 등록 → 방 배정은 하나의 Lua 실행으로. 정리에는 roomId 비교 조건을 추가했습니다.</p>
+    <div className="story-visual-label">두 요청이 같은 상태에 도착한 순간 <span>REDIS CURRENT ROOM</span></div>
+    <div className="story-race-timeline">
+      <div className="story-race-spine" aria-hidden="true"><i/><i/><i/></div>
+      <article className="story-race-lane story-race-lane-current">
+        <span>t0 · REQUEST 01</span><h4>새 세션 B 배정</h4><p>매칭이 끝나 현재 방을 B로 교체합니다.</p><code>SET currentRoom B</code>
+      </article>
+      <article className="story-race-state">
+        <small>SHARED STATE</small><strong>currentRoom</strong><b>B</b><p>새 방으로 덮어쓴 상태</p>
+      </article>
+      <article className="story-race-lane story-race-lane-late">
+        <span>t1 · REQUEST 02</span><h4>늦은 이전 세션 A 정리</h4><p>정리 대상은 A지만, 삭제 요청은 뒤늦게 도착합니다.</p><code>cleanup(roomId: A)</code>
+      </article>
+      <div className="story-race-guard">
+        <div><small>삭제 전 확인</small><strong>currentRoom == roomId?</strong></div><b>A ≠ B</b><div className="is-resolved"><Check aria-hidden="true" size={20}/><strong>삭제하지 않음</strong><small>새 세션 B 유지</small></div>
+      </div>
+    </div>
+    <div className="story-race-proof">
+      <div><small>BEFORE</small><strong>100/100</strong><span>새 방 유실</span></div><ArrowRight aria-hidden="true"/><div className="is-resolved"><small>AFTER</small><strong>0/100</strong><span>조건부 정리 적용</span></div>
+      <figure className="story-observability-mini"><img src="/assets/roundy-load-observability.svg" alt="Roundy 매칭 부하 테스트 관측 대시보드" loading="lazy"/><figcaption>합성 사용자 9,000명 · 3회 관측</figcaption></figure>
+    </div>
   </div>;
 }
 
 function VerificationVisual() {
   return <div>
     <figure className="story-service-capture"><img src="/assets/roundy-face-matching-latest.png" alt="등록 사진과 실시간 촬영을 대조하는 라운디 얼굴 인증 화면" width="2880" height="1810" loading="lazy"/><figcaption>프라이버시를 위해 포트폴리오 화면은 모자이크 처리했습니다. 실제 서비스에서는 회원가입 시 등록한 사진과 실시간 촬영을 대조합니다.</figcaption></figure>
+    <ol className="story-auth-machine" aria-label="인증 결과 상태 전이">
+      <li><span>01</span><strong>PENDING</strong><small>아직 소비하지 않음</small></li>
+      <li><span>02</span><strong>VERIFIED</strong><small>본인 요청만 1회 허용</small></li>
+      <li><span>03</span><strong>CONSUMED</strong><small>재사용 불가</small></li>
+    </ol>
+    <div className="story-auth-key"><small>소유권 키</small><code>verify:&#123;userId&#125;:&#123;requestId&#125;</code><span>타인 요청 · 중복 소비 · 늦은 완료 응답 차단</span></div>
     <div className="story-auth-result"><div><span>CONCURRENT CONSUMPTION</span><strong>1<small>/ 16 REQUESTS</small></strong><small>한 번만 소비 승인</small></div><ul><li><Check aria-hidden="true" size={17}/> 소유자의 VERIFIED만 소비</li><li><Check aria-hidden="true" size={17}/> 타인 요청·재소비 차단</li><li><Check aria-hidden="true" size={17}/> 늦은 완료로 재생성하지 않음</li></ul></div>
   </div>;
 }
@@ -104,15 +132,211 @@ function DasibomSourceScreens() {
   </details>;
 }
 
-const visuals: Record<StoryVisual, () => React.JSX.Element> = { payment: PaymentVisual, deadline: DeadlineVisual, race: RaceVisual, verification: VerificationVisual, search: SearchVisual, snapshot: SnapshotVisual, 'health-input': HealthInputVisual, 'health-owner': HealthOwnerVisual };
+function SanAuditVisual() {
+  return <figure className="san-svg-visual"><img src="/assets/san-async-audit-flow.svg?v=10" alt="Request Snapshot에서 Queue와 Worker Restore를 거쳐 Audit Log로 이어지고, 워커는 finally에서 이전 Context를 복원하는 비동기 감사 흐름" loading="lazy" decoding="async"/></figure>;
+}
+
+function SanTicketVisual() {
+  return <figure className="san-ticket-flow" aria-label="Dashboard에서 발급한 일회용 Ticket을 Redis에 저장하고 Chrome Extension에서 한 번만 소비하는 로그인 흐름">
+    <div className="san-ticket-flow-node"><span className="san-ticket-flow-icon is-dashboard"><img src="/assets/san-dashboard-browser-icon.png" alt="" width="1604" height="980" loading="lazy" decoding="async"/></span><div><strong>Dashboard</strong><small>사용자 인증 후 1회용 Ticket 발급</small></div></div>
+    <div className="san-ticket-flow-link"><ArrowDown aria-hidden="true"/><span><b>01</b> Ticket 발급 <small>TTL 2분</small></span></div>
+    <SanTicketWiggle/>
+    <div className="san-ticket-flow-link"><ArrowDown aria-hidden="true"/><span><b>02</b> Ticket 저장 <small>사용자 정보 · 요청 클라이언트</small></span></div>
+    <div className="san-ticket-flow-node"><Layers3 aria-hidden="true"/><div><strong>Redis</strong><small>SET login:ticket:&#123;token&#125;</small></div></div>
+    <div className="san-ticket-flow-link"><ArrowDown aria-hidden="true"/><span><b>03</b> getAndDelete <small>조회 즉시 1회 소비</small></span></div>
+    <div className="san-ticket-flow-node"><span className="san-ticket-flow-icon is-extension"><img src="/assets/san-chrome-extension-icon.png" alt="" width="1254" height="1254" loading="lazy" decoding="async"/></span><div><strong>Chrome Extension</strong><small>Ticket을 소비해 로그인 처리</small></div></div>
+    <div className="san-ticket-result-link"><ArrowDown aria-hidden="true"/><span>Ticket 검증 결과</span></div>
+    <div className="san-ticket-outcomes">
+      <div className="is-success"><CircleCheck aria-hidden="true"/><strong>로그인 성공</strong><small>유효 · 최초 소비</small></div>
+      <div className="is-failure"><CircleX aria-hidden="true"/><strong>만료 거절</strong><small>유효 시간 경과</small></div>
+      <div className="is-failure"><CircleX aria-hidden="true"/><strong>재사용 거절</strong><small>이미 소비한 Ticket</small></div>
+    </div>
+    <figcaption>반대 방향 로그인은 Ticket TTL 30초를 적용합니다.</figcaption>
+  </figure>;
+}
+
+function SanTicketCase({ story, caseNumber, id }: { story: PortfolioStory; caseNumber: string; id: string }) {
+  const sections = [
+    { number: '01', label: 'PROBLEM', title: 'URL에서 장기 JWT 노출 위험', copy: story.problem },
+    { number: '02', label: 'DECISION', title: 'URL에는 짧은 Ticket만', copy: story.decision },
+    { number: '03', label: 'BUILD', title: 'SecureRandom 32-byte + Redis', copy: story.implementation },
+    { number: '04', label: 'EVIDENCE', title: '유효한 Ticket만 1회 소비', copy: story.result },
+  ];
+  return <section className="san-evidence-case san-evidence-san-ticket" id={id} data-page aria-labelledby={`${id}-title`}>
+    <div className="san-evidence-canvas san-ticket-canvas">
+      <header className="san-evidence-header">
+        <div><span>PROBLEM {caseNumber}</span><small>{story.topic}</small></div>
+        <h3 id={`${id}-title`}>{story.title}</h3>
+        <p><SentenceLines text={story.takeaway}/></p>
+      </header>
+      <div className="san-ticket-main">
+        <SanTicketVisual/>
+        <section className="san-ticket-copy" aria-label="문제 해결 요약">
+          {sections.map((section) => <article key={section.number}>
+            <div className="san-ticket-copy-index"><span>{section.number}</span><i/><small>{section.label}</small></div>
+            <h4>{section.title}</h4>
+            <p><SentenceLines text={section.copy}/></p>
+          </article>)}
+        </section>
+      </div>
+    </div>
+  </section>;
+}
+
+function SanBenchmarkVisual() {
+  return <figure className="san-svg-visual"><img src="/assets/san-ai-parallel-benchmark.svg?v=9" alt="같은 카드 3개의 순차 처리 17.68초와 동시 처리 6.92초를 비교한 흐름도" loading="lazy" decoding="async"/></figure>;
+}
+
+function SanBenchmarkCase({ story, caseNumber, id }: { story: PortfolioStory; caseNumber: string; id: string }) {
+  return <section className="san-evidence-case san-evidence-san-benchmark" id={id} data-page aria-labelledby={`${id}-title`}>
+    <div className="san-evidence-canvas san-benchmark-canvas">
+      <header className="san-evidence-header">
+        <div><span>PROBLEM {caseNumber}</span><small>{story.topic}</small></div>
+        <h3 id={`${id}-title`}>{story.title}</h3>
+        <p><SentenceLines text={story.takeaway}/></p>
+      </header>
+      <div className="san-benchmark-main">
+        <section className="san-benchmark-left" aria-label="문제 해결 요약">
+          <article><h4>01 · PROBLEM</h4><p><SentenceLines text={story.problem}/></p></article>
+          <article><h4>02 · DECISION</h4><p><SentenceLines text={story.decision}/></p></article>
+          <article><h4>03 · BUILD</h4><p><SentenceLines text={story.implementation}/></p></article>
+          <article className="is-evidence"><h4>04 · EVIDENCE</h4><strong><SentenceLines text={story.result}/></strong></article>
+        </section>
+        <div className="san-evidence-stage"><SanBenchmarkVisual/></div>
+      </div>
+    </div>
+  </section>;
+}
+
+function SanEvidenceCase({ story, index }: { story: PortfolioStory; index: number }) {
+  const caseNumber = String(index + 1).padStart(2, '0');
+  const id = `san-case-${caseNumber}`;
+  if (story.visual === 'san-benchmark') return <SanBenchmarkCase story={story} caseNumber={caseNumber} id={id}/>;
+  if (story.visual === 'san-ticket') return <SanTicketCase story={story} caseNumber={caseNumber} id={id}/>;
+  const Visual = story.visual === 'san-audit' ? SanAuditVisual : SanBenchmarkVisual;
+
+  return <section className={`san-evidence-case san-evidence-${story.visual}`} id={id} data-page aria-labelledby={`${id}-title`}>
+    <div className="san-evidence-canvas">
+      <header className="san-evidence-header">
+        <div><span>PROBLEM {caseNumber}</span><small>{story.topic}</small></div>
+        <h3 id={`${id}-title`}>{story.title}</h3>
+        <p><SentenceLines text={story.takeaway}/></p>
+      </header>
+      <div className="san-evidence-stage"><Visual/></div>
+      <section className="san-evidence-notes" aria-label="문제 해결 요약">
+        <article><h4>01 · PROBLEM</h4><p><SentenceLines text={story.problem}/></p></article>
+        <article><h4>02 · DECISION</h4><p><SentenceLines text={story.decision}/></p></article>
+        <article><h4>03 · BUILD</h4><p><SentenceLines text={story.implementation}/></p></article>
+        <article className="is-evidence"><h4>04 · EVIDENCE</h4><strong><SentenceLines text={story.result}/></strong>{story.scope && <p>{story.scope}</p>}</article>
+      </section>
+    </div>
+  </section>;
+}
+
+const visuals: Partial<Record<StoryVisual, () => React.JSX.Element>> = { payment: PaymentVisual, deadline: DeadlineVisual, race: RaceVisual, verification: VerificationVisual, search: SearchVisual, snapshot: SnapshotVisual, 'health-input': HealthInputVisual, 'health-owner': HealthOwnerVisual };
+
+function RoundyRaceCase({ story }: { story: PortfolioStory }) {
+  return <section className="roundy-race-case" id="roundy-case-01" data-page aria-labelledby="roundy-race-title">
+    <div className="roundy-race-canvas roundy-unified-canvas">
+      <header className="roundy-unified-header"><div><span>PROBLEM 01</span><small>{story.topic}</small></div><h3 id="roundy-race-title">{story.title}</h3><p>{story.takeaway}</p></header>
+      <div className="roundy-unified-board">
+        <figure className="roundy-concurrency" aria-label="새 방 B 배정과 이전 방 A 정리 요청이 Redis에서 만나 조건부 삭제로 B를 유지하는 흐름">
+          <img className="roundy-race-svg" src="/assets/roundy-race-flow.svg?v=3" alt="새 방 B 배정과 늦은 이전 방 A 정리 요청이 Redis에서 만나, 현재 방 B와 정리 대상 A가 달라 B를 유지하는 흐름" width="620" height="668" loading="lazy" decoding="async"/>
+        </figure>
+        <RoundyCaseNotes story={story} race/>
+      </div>
+    </div>
+  </section>;
+}
+
+function RoundyCaseNotes({ story, race = false }: { story: PortfolioStory; race?: boolean }) {
+  return <section className="roundy-unified-notes" aria-label="문제 해결 요약">
+    <article><span className="roundy-note-index">01</span><div><h4>PROBLEM</h4><strong className="roundy-note-lead">{race ? '지연된 삭제 요청도 안전하게 무시하는 방 상태 관리' : '인증 결과의 소유권과 일회성'}</strong><p>{race ? '새 세션 B가 currentRoom에 저장된 뒤, 지연된 이전 방 A의 정리 요청이 도착했습니다. 정리 로직이 대상 방을 비교하지 않고 삭제하면, 현재 방 B까지 유실되는 위험이 있었습니다.' : story.problem}</p></div></article>
+    <article><span className="roundy-note-index">02</span><div><h4>DECISION</h4>{race ? <ul className="roundy-race-decision-list">
+      <li><Check aria-hidden="true"/>현재 방과 대상 roomId가 일치하는 경우에만 삭제합니다.</li>
+      <li><Check aria-hidden="true"/>일치하지 않으면 삭제하지 않고 새 방을 유지합니다.</li>
+      <li><Check aria-hidden="true"/>비교와 삭제를 Redis Lua 안에서 원자적으로 처리합니다.</li>
+    </ul> : <><strong className="roundy-note-lead">VERIFIED만 한 번 소비</strong><p>{story.decision}</p></>}</div></article>
+    <article><span className="roundy-note-index">03</span><div><h4>BUILD</h4><strong className="roundy-note-lead">{race ? 'Redis Lua로 비교와 삭제를 원자화' : '요청 단위 상태를 원자적으로 전이'}</strong><p>{race ? 'cleanup-room.lua에서 현재 방을 읽고, 정리 대상 roomId와 원자적으로 비교한 뒤 삭제합니다.' : story.implementation}</p></div></article>
+    <article className="is-evidence"><span className="roundy-note-index">04</span><div><h4>EVIDENCE</h4><strong>{race ? '새 방 유실 0/100' : '16개 동시 요청 중 1개만 성공'}</strong>{race ? <p>{story.scope}</p> : <ul className="roundy-proof-list"><li><Check aria-hidden="true"/>결과를 userId·requestId에 귀속</li><li><Check aria-hidden="true"/>PENDING은 소비 불가 · VERIFIED만 1회 소비</li><li><Check aria-hidden="true"/>타인 소비와 재소비는 실패</li></ul>}</div></article>
+  </section>;
+}
+
+function RoundyVerificationCase({ story }: { story: PortfolioStory }) {
+  return <section className="roundy-verification-case" id="roundy-case-02" data-page aria-labelledby="roundy-verification-title">
+    <div className="roundy-verification-canvas roundy-unified-canvas">
+      <header className="roundy-unified-header"><div><span>PROBLEM 02</span><small>{story.topic}</small></div><h3 id="roundy-verification-title">{story.title}</h3><p>{story.takeaway}</p></header>
+      <div className="roundy-unified-board">
+        <figure className="roundy-auth-timeline" aria-label="얼굴 인증 요청에서 Redis 상태 전이를 거쳐 결과를 한 번만 소비하는 흐름">
+          <figcaption><strong>얼굴 인증 결과가 소비되기까지</strong></figcaption>
+          <ol className="roundy-auth-steps">
+            <li><span className="roundy-auth-index">1</span><div className="roundy-auth-step-body"><h4>얼굴 인증 요청</h4><p>사용자가 얼굴을 촬영해 요청합니다.</p><div className="roundy-auth-flow"><img src="/assets/roundy-face-matching-latest.png" alt="Roundy 얼굴 인증 실제 화면" width="2880" height="1810" loading="lazy" decoding="async"/><ArrowRight aria-hidden="true"/><span>사용자 얼굴 촬영<br/><b>face-matching 요청</b></span></div><small>※ 포트폴리오 화면만 모자이크 처리했습니다.</small></div></li>
+            <li><span className="roundy-auth-index">2</span><div className="roundy-auth-step-body"><h4>Redis Gate</h4><p>요청 단위로 결과 상태를 관리합니다.</p><div className="roundy-auth-flow roundy-auth-redis"><img src="/assets/tech-icons/redis.svg" alt="Redis" width="72" height="72" loading="lazy" decoding="async"/><ArrowRight aria-hidden="true"/><span>요청 상태 저장<br/><b>userId + requestId</b></span></div></div></li>
+            <li><span className="roundy-auth-index">3</span><div className="roundy-auth-step-body"><h4>상태 전이</h4><p>하나의 요청은 정해진 순서로만 진행됩니다.</p><div className="roundy-auth-states"><span><strong>PENDING</strong><small>요청 접수</small></span><ArrowRight aria-hidden="true"/><span className="is-verified"><strong>VERIFIED</strong><small>얼굴 일치 확인</small></span><ArrowRight aria-hidden="true"/><span><strong>CONSUMED</strong><small>1회만 소비</small></span></div></div></li>
+            <li><span className="roundy-auth-index">4</span><div className="roundy-auth-step-body"><h4>16개 중 1개만 성공</h4><p>동시에 16개 요청을 보냈고, 한 건만 통과했습니다.</p><div className="roundy-auth-proof"><div className="roundy-auth-proof-dots" aria-label="16개 요청 중 1개 성공">{Array.from({ length: 16 }, (_, index) => <span key={index} className={index === 6 ? 'is-success' : ''}>{index + 1}</span>)}</div><strong>1개만 성공</strong><small>나머지 15개는 이미 소비됨</small></div></div></li>
+          </ol>
+        </figure>
+        <RoundyCaseNotes story={story}/>
+      </div>
+    </div>
+  </section>;
+}
+
+function CapsureBlueprintCase({ story, index }: { story: PortfolioStory; index: number }) {
+  const caseNumber = String(index + 1).padStart(2, '0');
+  const id = `capsure-case-${caseNumber}`;
+  const isPayment = story.visual === 'payment';
+  const diagram = isPayment ? '/assets/capsure-payment-blueprint.svg' : '/assets/capsure-deadline-blueprint.svg';
+  const diagramAlt = isPayment
+    ? 'PG 승인 완료 뒤 내부 저장이 실패했을 때 기존 주문을 대사해 계약과 이벤트까지 복구하는 시스템 흐름'
+    : '유예 종료 시점을 기준으로 수납과 실효 배치가 동일한 계약 상태를 판단하는 시스템 흐름';
+
+  return <section className={`capsure-blueprint-case capsure-blueprint-${story.visual}`} id={id} data-page aria-labelledby={`${id}-title`}>
+    <div className="capsure-blueprint-canvas">
+      <header className="capsure-blueprint-header">
+        <div className="capsure-blueprint-eyebrow">
+          <span>PROBLEM {caseNumber}</span>
+          <small>{story.topic}</small>
+        </div>
+        <h3 id={`${id}-title`}>{story.title}</h3>
+        <p>{story.takeaway}</p>
+      </header>
+
+      <div className="capsure-blueprint-board">
+        <div className="capsure-blueprint-main">
+          <figure className="capsure-blueprint-diagram">
+            <img src={diagram} alt={diagramAlt} loading="lazy" decoding="async"/>
+          </figure>
+
+          <section className="capsure-blueprint-rule" aria-label="핵심 원칙">
+            <div><small>{isPayment ? '복구의 기준' : '변하지 않는 원칙'}</small><strong>{isPayment ? '승인은 반복하지 않고, 끊긴 내부 처리를 이어갑니다.' : '입금은 기록하되, 계약을 자동으로 되살리지 않습니다.'}</strong></div>
+            <p>{story.application}</p>
+          </section>
+        </div>
+
+        <aside className="capsure-blueprint-notes" aria-label="문제 해결 요약">
+          <article><h4>01 · PROBLEM</h4><p><SentenceLines text={story.problem}/></p></article>
+          <article><h4>02 · DECISION</h4><p><SentenceLines text={story.decision}/></p></article>
+          <article><h4>03 · BUILD</h4><p><SentenceLines text={story.implementation}/></p></article>
+          <article className="is-evidence"><h4>04 · EVIDENCE</h4><strong><SentenceLines text={story.result}/></strong><p>{story.scope}</p></article>
+        </aside>
+      </div>
+    </div>
+  </section>;
+}
 
 export function EvidenceCaseSlide({ projectId, projectName, story, index }: { projectId: string; projectName: string; story: PortfolioStory; index: number }) {
+  if (projectId === 'roundy' && story.visual === 'race') return <RoundyRaceCase story={story}/>;
+  if (projectId === 'roundy' && story.visual === 'verification') return <RoundyVerificationCase story={story}/>;
+  if (projectId === 'capsure') return <CapsureBlueprintCase story={story} index={index}/>;
+  if (projectId === 'san') return <SanEvidenceCase story={story} index={index}/>;
   const caseNumber = String(index + 1).padStart(2, '0');
   const id = `${projectId}-case-${caseNumber}`;
   const Visual = visuals[story.visual];
-  return <section className={`evidence-story evidence-story-${projectId} ${index === 1 ? 'evidence-story-dark' : ''}`} id={id} data-page aria-labelledby={`${id}-title`}>
-    <div className="story-inner">
-      <header className="story-heading"><div className="story-eyebrow"><span className="story-project-mark"><img src={`/assets/project-${projectId}-hd.png`} alt="" width="28" height="28" />{projectName} / PROBLEM {caseNumber}</span><span>{story.topic}</span></div><h3 id={`${id}-title`}>{story.title}</h3><p>{story.takeaway}</p></header>
+  if (!Visual) return null;
+  return <section className={`evidence-story evidence-story-${projectId} evidence-story-${story.visual} evidence-story-dark`} id={id} data-page aria-labelledby={`${id}-title`}>
+    <div className="story-shell"><div className="story-inner">
+      <header className="story-heading"><div className="story-eyebrow"><span className="story-problem-index">PROBLEM {caseNumber}</span><span className="story-project-mark"><img src={`/assets/project-${projectId}-hd.png`} alt="" width="28" height="28" loading="lazy" decoding="async" />{projectName}</span><span>{story.topic}</span></div><h3 id={`${id}-title`}>{story.title}</h3><p>{story.takeaway}</p></header>
       <div className="story-body">
         <div className={`story-visual story-visual-${story.visual}`}><Visual/></div>
         <div className="story-explanation">
@@ -126,6 +350,6 @@ export function EvidenceCaseSlide({ projectId, projectName, story, index }: { pr
         <details className="story-evidence-details"><summary>검증 조건과 범위 보기</summary><p>{story.details}</p></details>
         {story.visual === 'health-owner' ? <DasibomSourceScreens/> : null}
       </div>
-    </div>
+    </div></div>
   </section>;
 }
