@@ -3,8 +3,8 @@ import './globals.css';
 import './evidence-stories.css';
 
 export const metadata: Metadata = {
-  title: '유다현 | 디지털기획서비스',
-  description: '유다현 Product Manager 포트폴리오',
+  title: '유다현 | 현대엘리베이터 디지털 서비스 PM 포트폴리오',
+  description: '고객의 이동 경험과 서비스 흐름을 끝까지 설계하고 확인하는 유다현의 포트폴리오',
   icons: {
     icon: '/assets/hyundai-elevator-favicon.png',
     shortcut: '/assets/hyundai-elevator-favicon.png',

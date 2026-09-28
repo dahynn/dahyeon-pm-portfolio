@@ -1,7 +1,7 @@
 @import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
 @import 'tailwindcss';
 
-:root { --navy:#0a2d8a; --orange:#0057b8; --cream:#f5f8fc; --dark:#102a5d; --line:#c7d6ea; --muted:#60708b; --hyundai-green:#009a44; --hyundai-yellow:#ffb81c; --display:68px; --section-title:42px; --body:16px; --meta:13px; }
+:root { --navy:#102a5d; --orange:#0057b8; --cream:#f5f8fc; --dark:#1c1d1e; --line:#c7d6ea; --muted:#60708b; --display:68px; --section-title:42px; --body:16px; --meta:13px; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-snap-type:y proximity; }
 body { margin:0; background:var(--cream); color:var(--navy); font-family:Pretendard Variable, Pretendard, sans-serif; }
@@ -38,25 +38,25 @@ a { color:inherit; text-decoration:none; }
 .profile-item div p { margin:5px 0 0; color:#5f6877; font-size:.82rem; line-height:1.55; word-break:keep-all; }
 .profile-side { display:grid; align-content:start; gap:clamp(26px,4vw,58px); }.award-item { display:grid; grid-template-columns:54px 1fr; gap:14px; margin:0; padding:10px 0; color:#8790a0; font-size:.86rem; }.award-item strong { color:var(--dark); font-size:.95rem; letter-spacing:-.04em; }.skill-section { display:grid; gap:7px; }.skill-item { display:grid; grid-template-columns:23px 1fr 100px; align-items:center; gap:10px; margin:0; padding:4px 0; color:#3d4655; font-size:.9rem; font-weight:650; }.skill-item img { display:block; width:20px; height:20px; object-fit:contain; }.skill-meter { display:grid; grid-template-columns:repeat(5, 1fr); gap:5px; }.skill-meter i { height:6px; background:#dce0e6; }.skill-meter i.active { background:var(--orange); }
 .page-number { position:absolute; top:72px; right:clamp(36px,5.5vw,84px); margin:0; color:var(--orange); font-size:.72rem; font-weight:800; letter-spacing:.12em; }
-.brand-logo { position:absolute; z-index:8; top:16px; right:clamp(36px,5.5vw,84px); display:block; width:178px; height:52px; }
-.brand-logo img { display:block; width:100%; height:100%; object-fit:contain; }
+.hanwha-logo { position:absolute; z-index:8; top:16px; right:clamp(36px,5.5vw,84px); display:block; width:178px; height:52px; }
+.hanwha-logo img { display:block; width:100%; height:100%; object-fit:contain; }
 .page-navigation { position:fixed; z-index:10; top:50%; right:clamp(18px,2vw,34px); display:grid; gap:9px; padding:10px 0; transform:translateY(-50%); }.page-navigation a { display:block; width:16px; height:14px; transition:transform .2s; }.page-navigation a::before { display:block; width:10px; height:1px; background:#c9cdd3; content:""; transition:width .2s, background .2s; }.page-navigation a span, .page-navigation a b { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; }.page-navigation a:hover, .page-navigation a:focus-visible { transform:translateX(-3px); outline:0; }.page-navigation a:hover::before, .page-navigation a:focus-visible::before { width:16px; background:var(--orange); }
 .statement-page { display:grid; place-items:center; background:var(--dark); color:#fff; }.statement-page>div, .case-page>div { width:min(100%,900px); }
 .eyebrow { margin:0 0 24px; color:var(--orange); font-size:.75rem; font-weight:750; letter-spacing:.1em; }
 .statement-page h2, .project-index-page h2, .case-page h2 { margin:0; font-size:var(--section-title); font-weight:750; letter-spacing:-.07em; line-height:1.25; }.statement-page div>p:last-child, .case-page div>p:last-child { max-width:530px; margin:22px 0 0; color:#bdc1c7; font-size:var(--body); line-height:1.7; word-break:keep-all; }
 .project-index-page { display:flex; flex-direction:column; justify-content:center; background:var(--cream); }.index-heading { margin-bottom:clamp(38px,5vw,68px); }.index-heading>p:last-child { max-width:360px; margin:14px 0 0; color:var(--muted); font-size:var(--body); line-height:1.6; letter-spacing:-.035em; }
-.journey-page { display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff; }.journey-heading { margin-bottom:clamp(38px,4vw,56px); }.journey-page h2 { margin:0; color:var(--dark); font-size:32px; font-weight:750; letter-spacing:-.07em; line-height:1.25; }.journey-brand-end { position:absolute; z-index:3; bottom:clamp(16px,2.5vw,34px); left:50%; width:108px; height:30px; padding:3px 6px; background:#fff; object-fit:contain; transform:translateX(-50%); }
+.journey-page { display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff; }.journey-heading { margin-bottom:clamp(38px,4vw,56px); }.journey-page h2 { margin:0; color:var(--dark); font-size:32px; font-weight:750; letter-spacing:-.07em; line-height:1.25; }.journey-hanwha-end { position:absolute; z-index:3; bottom:clamp(16px,2.5vw,34px); left:50%; width:108px; height:30px; padding:3px 6px; background:#fff; object-fit:contain; transform:translateX(-50%); }
 .journey-content { display:grid; grid-template-columns:minmax(0,1fr) minmax(190px,260px); gap:clamp(40px,6vw,108px); align-items:start; }.journey-aside { display:grid; gap:28px; }.journey-awards { border-top:2px solid #293142; }.journey-awards h3, .journey-skills h3 { margin:0; padding:14px 0 12px; border-bottom:1px solid #dce0e6; color:var(--dark); font-size:18px; font-weight:800; letter-spacing:-.06em; }.journey-awards p { display:grid; grid-template-columns:42px 1fr; gap:10px; margin:0; padding:13px 0; border-bottom:1px solid #dce0e6; }.journey-awards p span { color:#8790a0; font-size:11px; font-weight:700; }.journey-awards p strong { color:#293142; font-size:13px; font-weight:750; letter-spacing:-.045em; line-height:1.35; }.journey-awards .certificate-item { padding:9px 0; }.certificate-item strong { display:grid; gap:2px; }.certificate-item small { color:#7a8391; font-size:10px; font-weight:600; letter-spacing:-.035em; }.journey-skills { border-top:2px solid #293142; }.journey-skill { display:grid; grid-template-columns:18px 1fr 62px; align-items:center; gap:8px; margin:0; padding:8px 0; color:#3d4655; font-size:12px; font-weight:700; }.journey-skill img { display:block; width:17px; height:17px; object-fit:contain; }.journey-skill-meter { display:grid; grid-template-columns:repeat(5,1fr); gap:3px; }.journey-skill-meter i { height:4px; background:#dce0e6; }.journey-skill-meter i.active { background:var(--orange); }
-.journey-track { position:relative; display:grid; grid-template-columns:repeat(6,minmax(130px,1fr)); gap:clamp(16px,2.3vw,42px); margin:0; padding:0; list-style:none; }.journey-track::before { position:absolute; top:5px; left:0; right:0; height:2px; background:#d8dde5; content:""; }.journey-item { position:relative; padding-top:28px; }.journey-dot { position:absolute; top:0; left:0; z-index:2; width:18px; height:18px; background:#25282d; -webkit-mask:url('/assets/hyundai-elevator-favicon.svg') center / contain no-repeat; mask:url('/assets/hyundai-elevator-favicon.svg') center / contain no-repeat; }.journey-date { margin:0 0 10px; color:var(--orange); font-size:12px; font-weight:800; white-space:nowrap; }.journey-item strong { display:block; color:var(--dark); font-size:17px; font-weight:800; letter-spacing:-.05em; line-height:1.35; word-break:keep-all; }.journey-item>p:last-child { margin:9px 0 0; color:#687180; font-size:12px; line-height:1.55; word-break:keep-all; }
+.journey-track { position:relative; display:grid; grid-template-columns:repeat(6,minmax(130px,1fr)); gap:clamp(16px,2.3vw,42px); margin:0; padding:0; list-style:none; }.journey-track::before { position:absolute; top:5px; left:0; right:0; height:2px; background:#d8dde5; content:""; }.journey-item { position:relative; padding-top:28px; }.journey-dot { position:absolute; top:0; left:0; z-index:2; width:18px; height:18px; background:#25282d; -webkit-mask:url('/assets/hyundai-elevator-favicon.png') center / contain no-repeat; mask:url('/assets/hyundai-elevator-favicon.png') center / contain no-repeat; }.journey-date { margin:0 0 10px; color:var(--orange); font-size:12px; font-weight:800; white-space:nowrap; }.journey-item strong { display:block; color:var(--dark); font-size:17px; font-weight:800; letter-spacing:-.05em; line-height:1.35; word-break:keep-all; }.journey-item>p:last-child { margin:9px 0 0; color:#687180; font-size:12px; line-height:1.55; word-break:keep-all; }
 .project-list { border-top:2px solid var(--navy); }.project-row { display:grid; grid-template-columns:90px minmax(0,1fr) 34px; align-items:center; column-gap:18px; min-height:116px; border-bottom:1px solid var(--line); transition:padding .2s, background .2s; }.project-row:hover { padding-left:18px; background:#efede6; }.project-number { color:var(--orange); font-size:16px; font-weight:800; letter-spacing:.04em; }.project-copy strong { display:block; color:var(--dark); font-size:clamp(26px,3vw,38px); font-weight:750; letter-spacing:-.075em; }.project-copy p { margin:3px 0 0; color:#3d4655; font-size:14px; font-weight:650; letter-spacing:-.045em; }.project-copy small { display:block; margin-top:4px; color:#8790a0; font-size:11px; font-weight:650; letter-spacing:-.02em; }.project-arrow { color:var(--orange); font-size:24px; font-style:normal; transition:transform .2s; }.project-row:hover .project-arrow { transform:translate(4px, -4px); }
 .case-page { display:grid; place-items:center; background:var(--navy); color:#fff; }.case-page:nth-of-type(5) { background:var(--orange); }.case-page:nth-of-type(6) { background:var(--cream); color:var(--navy); }.case-page .eyebrow { color:var(--orange); }.case-page:nth-of-type(5) .eyebrow { color:var(--navy); }.case-page:nth-of-type(6) div>p:last-child { color:var(--muted); }
 @media (max-width:1040px) and (min-width:761px) { .cover-page { grid-template-columns:220px minmax(0,1fr); gap:32px; }.profile-kicker { max-width:215px; font-size:17px; }.profile-intro h1 { margin-bottom:24px; font-size:40px; }.photo-slot { width:170px; }.profile-name { font-size:34px; }.profile-role { font-size:15px; }.profile-contact { margin-top:24px; }.profile-contact h2 { margin-bottom:8px; font-size:17px; }.profile-contact dl>div { padding:4px 0; font-size:10px; }.profile-details { min-height:0; }.profile-details>h1 { font-size:42px; }.cover-facts { margin-top:34px; }.cover-facts>div { min-height:94px; padding-top:12px; }.cover-facts p { margin-bottom:7px; font-size:10px; }.cover-facts strong { font-size:13px; }.cover-secondary { gap:18px; margin-top:20px; }.journey-page { justify-content:flex-start; }.journey-heading { margin-top:62px; margin-bottom:38px; }.journey-content { grid-template-columns:minmax(0,1fr) 180px; gap:36px; }.journey-track { grid-template-columns:1fr; gap:0; padding-left:30px; }.journey-track::before { top:0; bottom:0; left:5px; right:auto; width:2px; height:auto; }.journey-item { min-height:70px; padding:0 0 16px; }.journey-dot { top:3px; left:-30px; }.journey-date { margin-bottom:4px; }.journey-item strong { font-size:14px; }.journey-item>p:last-child { margin-top:5px; font-size:11px; }.journey-awards h3, .journey-skills h3 { font-size:16px; }.journey-awards p { grid-template-columns:1fr; gap:4px; padding:10px 0; }.journey-skill { grid-template-columns:16px 1fr 52px; gap:5px; padding:5px 0; font-size:11px; }.journey-skill img { width:14px; height:14px; }.project-row { min-height:104px; } }
 @media (max-height:920px) and (min-width:761px) { .cover-page { padding-top:42px; padding-bottom:42px; }.profile-intro h1 { margin-bottom:22px; }.photo-slot { width:240px; }.profile-name { margin-top:14px; }.profile-item { padding:10px 0; }.profile-side { gap:22px; } }
-@media (max-width:760px) { :root { --display:46px; --section-title:32px; --body:15px; }.cover-page { grid-template-columns:1fr; gap:44px; padding:68px 24px; }.brand-logo { top:14px; right:24px; width:118px; height:34px; }.page-number { top:50px; right:24px; }.page-navigation { right:12px; }.page-navigation a { grid-template-columns:14px; font-size:0; }.page-navigation a::before { width:10px; }.page-navigation a:hover::before, .page-navigation a:focus-visible::before { width:14px; }.profile-intro { align-items:flex-start; padding-top:32px; }.profile-kicker { font-size:20px; }.profile-intro h1 { margin-bottom:24px; }.photo-slot { width:180px; }.profile-name { font-size:36px; }.profile-details { min-height:0; }.profile-details>h1 { font-size:40px; }.cover-facts { grid-template-columns:1fr; margin-top:36px; }.cover-facts>div, .cover-facts>div+div { min-height:0; padding:14px 0; border-right:0; border-bottom:1px solid #dce0e6; }.cover-facts>div:last-child { border-bottom:0; }.cover-secondary { grid-template-columns:1fr; margin-top:28px; }.statement-page, .journey-page, .project-index-page, .case-page { padding:68px 24px; }.journey-page { justify-content:flex-start; }.journey-brand-end { display:none; }.journey-heading { margin-top:44px; margin-bottom:34px; }.journey-content { grid-template-columns:1fr; gap:28px; }.journey-track { grid-template-columns:1fr; gap:0; padding-left:28px; }.journey-track::before { top:0; bottom:0; left:5px; right:auto; width:2px; height:auto; }.journey-item { min-height:84px; padding:0 0 24px; }.journey-dot { top:4px; left:-28px; }.journey-date { margin-bottom:5px; }.project-row { grid-template-columns:42px minmax(0,1fr) auto; column-gap:10px; min-height:94px; }.project-copy strong { font-size:26px; }.project-copy p { font-size:13px; }.project-copy small { font-size:10px; }.project-arrow { font-size:20px; } }
+@media (max-width:760px) { :root { --display:46px; --section-title:32px; --body:15px; }.cover-page { grid-template-columns:1fr; gap:44px; padding:68px 24px; }.hanwha-logo { top:14px; right:24px; width:118px; height:34px; }.page-number { top:50px; right:24px; }.page-navigation { right:12px; }.page-navigation a { grid-template-columns:14px; font-size:0; }.page-navigation a::before { width:10px; }.page-navigation a:hover::before, .page-navigation a:focus-visible::before { width:14px; }.profile-intro { align-items:flex-start; padding-top:32px; }.profile-kicker { font-size:20px; }.profile-intro h1 { margin-bottom:24px; }.photo-slot { width:180px; }.profile-name { font-size:36px; }.profile-details { min-height:0; }.profile-details>h1 { font-size:40px; }.cover-facts { grid-template-columns:1fr; margin-top:36px; }.cover-facts>div, .cover-facts>div+div { min-height:0; padding:14px 0; border-right:0; border-bottom:1px solid #dce0e6; }.cover-facts>div:last-child { border-bottom:0; }.cover-secondary { grid-template-columns:1fr; margin-top:28px; }.statement-page, .journey-page, .project-index-page, .case-page { padding:68px 24px; }.journey-page { justify-content:flex-start; }.journey-hanwha-end { display:none; }.journey-heading { margin-top:44px; margin-bottom:34px; }.journey-content { grid-template-columns:1fr; gap:28px; }.journey-track { grid-template-columns:1fr; gap:0; padding-left:28px; }.journey-track::before { top:0; bottom:0; left:5px; right:auto; width:2px; height:auto; }.journey-item { min-height:84px; padding:0 0 24px; }.journey-dot { top:4px; left:-28px; }.journey-date { margin-bottom:5px; }.project-row { grid-template-columns:42px minmax(0,1fr) auto; column-gap:10px; min-height:94px; }.project-copy strong { font-size:26px; }.project-copy p { font-size:13px; }.project-copy small { font-size:10px; }.project-arrow { font-size:20px; } }
 
-.journey-item strong.finance-campus, .journey-item strong.ssafy-campus, .journey-item strong.dongguk-university, .journey-item strong.exchange-study, .journey-item strong.education-study { position:relative; z-index:0; display:inline-block; }
-.finance-campus::before { position:absolute; z-index:-1; bottom:.08em; left:-.14em; width:0; height:.72em; background:#ffe26b; content:""; transform:skewX(-9deg); }
-.journey-page.is-active .finance-campus::before { animation:highlighter-sweep .72s cubic-bezier(.2,.8,.2,1) .28s forwards; }
+.journey-item strong.hanwha-campus, .journey-item strong.ssafy-campus, .journey-item strong.dongguk-university, .journey-item strong.exchange-study, .journey-item strong.education-study { position:relative; z-index:0; display:inline-block; }
+.hanwha-campus::before { position:absolute; z-index:-1; bottom:.08em; left:-.14em; width:0; height:.72em; background:#bcd7f5; content:""; transform:skewX(-9deg); }
+.journey-page.is-active .hanwha-campus::before { animation:highlighter-sweep .72s cubic-bezier(.2,.8,.2,1) .28s forwards; }
 @keyframes highlighter-sweep { to { width:calc(100% + .28em); } }
 
 .cover-education h2 { position:relative; z-index:0; display:inline-block; }
@@ -87,7 +87,7 @@ a { color:inherit; text-decoration:none; }
   .journey-dot.default-node { background:#25282d; }
   .journey-dot.education-node { background:#a99ad4; }
   .journey-dot.ssafy-node { background:#79c8ef; }
-  .journey-dot.finance-campus-node { background:var(--orange); }
+  .journey-dot.hanwha-node { background:var(--orange); }
 }
 
 .project-row { grid-template-columns:48px 42px minmax(0,1fr) 34px; }
@@ -128,8 +128,8 @@ a { color:inherit; text-decoration:none; }
   .journey-dot.default-node { color:#25282d; background:#25282d; }
   .journey-dot.education-node { color:#a99ad4; background:#a99ad4; }
   .journey-dot.ssafy-node { color:#79c8ef; background:#79c8ef; }
-  .journey-dot.finance-campus-node { color:var(--orange); background:var(--orange); }
-  .journey-brand-end {
+  .journey-dot.hanwha-node { color:var(--orange); background:var(--orange); }
+  .journey-hanwha-end {
     position:absolute;
     z-index:5;
     right:auto;
@@ -145,7 +145,7 @@ a { color:inherit; text-decoration:none; }
     object-fit:contain;
     transform:translateX(-50%) scale(.7);
   }
-  .journey-page.is-active .journey-brand-end { animation:journey-logo-complete .38s cubic-bezier(.2,.85,.3,1.2) 1.08s forwards; }
+  .journey-page.is-active .journey-hanwha-end { animation:journey-logo-complete .38s cubic-bezier(.2,.85,.3,1.2) 1.08s forwards; }
 }
 @media (max-width:760px) {
   .journey-dot,
@@ -163,8 +163,8 @@ a { color:inherit; text-decoration:none; }
   .journey-dot.default-node { color:#25282d; background:#25282d; }
   .journey-dot.education-node { color:#a99ad4; background:#a99ad4; }
   .journey-dot.ssafy-node { color:#79c8ef; background:#79c8ef; }
-  .journey-dot.finance-campus-node { color:var(--orange); background:var(--orange); }
-  .journey-brand-end { display:block; width:2.5rem; height:2.3rem; margin:.25rem 0 0 -.625rem; object-fit:contain; }
+  .journey-dot.hanwha-node { color:var(--orange); background:var(--orange); }
+  .journey-hanwha-end { display:block; width:2.5rem; height:2.3rem; margin:.25rem 0 0 -.625rem; object-fit:contain; }
 }
 
 /* 소개와 여정의 공통 80% 콘텐츠 비율 */
@@ -234,7 +234,7 @@ a { color:inherit; text-decoration:none; }
   }
   .journey-item:last-child::after { display:none; }
   .journey-page.is-active .journey-item::after { animation:journey-segment-reveal .42s ease-out both; }
-  .journey-brand-end { bottom:clamp(58px,10vh,84px); left:38%; transform:translateX(-50%); }
+  .journey-hanwha-end { bottom:clamp(58px,10vh,84px); left:38%; transform:translateX(-50%); }
 }
 
 @keyframes journey-segment-reveal {
@@ -280,13 +280,13 @@ a { color:inherit; text-decoration:none; }
     height:22px;
     opacity:0;
     transform:translate(-50%,-50%) scale(.45);
-  -webkit-mask:url('/assets/hyundai-elevator-favicon.svg') center / contain no-repeat;
-  mask:url('/assets/hyundai-elevator-favicon.svg') center / contain no-repeat;
+    -webkit-mask:url('/assets/hyundai-elevator-favicon.png') center / contain no-repeat;
+    mask:url('/assets/hyundai-elevator-favicon.png') center / contain no-repeat;
   }
   .orbit-node.default-node { background:#25282d; }
   .orbit-node.education-node { background:#a99ad4; }
   .orbit-node.ssafy-node { background:#79c8ef; }
-  .orbit-node.finance-campus-node { background:var(--orange); }
+  .orbit-node.hanwha-node { background:var(--orange); }
   .orbit-node-1 { top:9%; left:45%; }
   .orbit-node-2 { top:12%; left:68%; }
   .orbit-node-3 { top:29%; left:88%; }
@@ -363,7 +363,7 @@ a { color:inherit; text-decoration:none; }
   .journey-item::after,
   .journey-item:nth-child(odd)::after,
   .journey-item:nth-child(even)::after { display:none; }
-  .journey-brand-end {
+  .journey-hanwha-end {
     display:none;
   }
 }
@@ -409,7 +409,7 @@ a { color:inherit; text-decoration:none; }
   .journey-date { margin:0 0 4px; color:var(--orange); font-size:12px; }
   .journey-item strong { font-size:16px; line-height:1.35; }
   .journey-copy>p:last-child { margin:5px 0 0; color:#687180; font-size:12px; line-height:1.5; }
-  .journey-brand-end {
+  .journey-hanwha-end {
     position:relative;
     display:block;
     bottom:auto;
@@ -558,7 +558,7 @@ a { color:inherit; text-decoration:none; }
   .journey-page.is-active .journey-item:nth-child(7) :is(.journey-dot), .journey-page.is-active .journey-item:nth-child(7)::after, .journey-page.is-active .journey-item:nth-child(7) .journey-copy { animation-delay:.80s; }
   .journey-page.is-active .journey-item:nth-child(8) :is(.journey-dot), .journey-page.is-active .journey-item:nth-child(8)::after, .journey-page.is-active .journey-item:nth-child(8) .journey-copy { animation-delay:.92s; }
   .journey-page.is-active .journey-item:nth-child(9) :is(.journey-dot), .journey-page.is-active .journey-item:nth-child(9)::after, .journey-page.is-active .journey-item:nth-child(9) .journey-copy { animation-delay:1.04s; }
-  .journey-brand-end { display:none; }
+  .journey-hanwha-end { display:none; }
 }
 
 @media (max-width:760px) {
@@ -639,7 +639,7 @@ a { color:inherit; text-decoration:none; }
 }
 
 @media (prefers-reduced-motion:reduce) {
-  .journey-copy, .journey-dot, .journey-brand-end { opacity:1; transform:none; animation:none !important; }
+  .journey-copy, .journey-dot, .journey-hanwha-end { opacity:1; transform:none; animation:none !important; }
   .journey-orbit-guide { clip-path:none; animation:none !important; }
   .journey-orbit-complete { opacity:1; transform:none; animation:none !important; }
   .orbit-node { display:none; }
@@ -678,8 +678,8 @@ a { color:inherit; text-decoration:none; }
 .project-copy p { min-height:40px; margin:7px 0 0; color:#6e6e73; font-size:13px; font-weight:550; line-height:1.5; word-break:keep-all; }
 .project-action { display:flex; align-items:center; justify-content:flex-end; gap:10px; width:100%; margin-top:auto; }
 .project-action small { color:#8b8b91; font-size:10px; font-weight:650; letter-spacing:-.02em; }
-.project-action b { display:grid; place-items:center; min-width:64px; height:34px; padding:0 16px; border-radius:999px; background:var(--orange); color:#fff; font-size:11px; font-weight:800; box-shadow:0 6px 14px rgba(243,115,33,.2); transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s; }
-.project-row:hover .project-action b { box-shadow:0 12px 24px rgba(243,115,33,.3); transform:scale(1.06); }
+.project-action b { display:grid; place-items:center; min-width:64px; height:34px; padding:0 16px; border-radius:999px; background:var(--orange); color:#fff; font-size:11px; font-weight:800; box-shadow:0 6px 14px rgba(0,87,184,.2); transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s; }
+.project-row:hover .project-action b { box-shadow:0 12px 24px rgba(0,87,184,.3); transform:scale(1.06); }
 @media (max-width:1100px) and (min-width:761px) {
   .project-index-page { justify-content:flex-start; padding-top:94px; }
   .project-list { grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -718,15 +718,15 @@ a { color:inherit; text-decoration:none; }
 }
 
 /* 여정선 마감: 작은 지점과 한화 오렌지로 짙어지는 흐름 */
-.journey-item { --line-color:#f9dfcf; }
-.journey-item:nth-child(2) { --line-color:#f8d2b9; }
+.journey-item { --line-color:#dceafa; }
+.journey-item:nth-child(2) { --line-color:#cbe1f8; }
 .journey-item:nth-child(3) { --line-color:#f8cab0; }
-.journey-item:nth-child(4) { --line-color:#f7c3a1; }
-.journey-item:nth-child(5) { --line-color:#f6b286; }
+.journey-item:nth-child(4) { --line-color:#accff2; }
+.journey-item:nth-child(5) { --line-color:#8fbeec; }
 .journey-item:nth-child(6) { --line-color:#f5a06a; }
-.journey-item:nth-child(7) { --line-color:#f48e50; }
+.journey-item:nth-child(7) { --line-color:#3585d3; }
 .journey-item:nth-child(8) { --line-color:#f47f3a; }
-.journey-item:nth-child(9) { --line-color:#f37321; }
+.journey-item:nth-child(9) { --line-color:#0057b8; }
 .journey-dot {
   margin:0;
   padding:0;
@@ -755,7 +755,7 @@ a { color:inherit; text-decoration:none; }
 
 @media (min-width:761px) {
   .journey-track::before {
-    background:linear-gradient(to bottom,#f9dfcf 0%,#f7c3a1 38%,#f59a61 70%,#f37321 100%);
+    background:linear-gradient(to bottom,#dceafa 0%,#accff2 38%,#6ba6e0 70%,#0057b8 100%);
   }
   .journey-item::after,
   .journey-item:nth-child(odd)::after,
@@ -786,7 +786,7 @@ a { color:inherit; text-decoration:none; }
   .journey-dot.default-node,
   .journey-dot.education-node,
   .journey-dot.ssafy-node,
-  .journey-dot.finance-campus-node {
+  .journey-dot.hanwha-node {
     color:var(--line-color);
     background:var(--line-color);
   }
@@ -830,14 +830,14 @@ a { color:inherit; text-decoration:none; }
   .journey-dot.default-node,
   .journey-dot.education-node,
   .journey-dot.ssafy-node,
-  .journey-dot.finance-campus-node {
+  .journey-dot.hanwha-node {
     color:var(--line-color);
     background:var(--line-color);
   }
   .journey-item { min-height:112px; }
 }
 
-/* 여정의 마지막: 주황색 선을 금융 교육 경험로 연결 */
+/* 여정의 마지막: 주황색 선을 현대엘리베이터 지원 포부로 연결 */
 .journey-destination {
   position:relative;
   margin-left:var(--axis, 0%);
@@ -849,8 +849,8 @@ a { color:inherit; text-decoration:none; }
   left:0;
   width:2rem;
   height:calc(24px + 2.75rem);
-  border-bottom:2px solid var(--hyundai-yellow);
-  border-left:2px solid var(--hyundai-yellow);
+  border-bottom:2px solid var(--orange);
+  border-left:2px solid var(--orange);
   border-bottom-left-radius:1rem;
   content:"";
 }
@@ -859,7 +859,7 @@ a { color:inherit; text-decoration:none; }
   width:16rem;
   max-width:100%;
   height:auto;
-  margin:0 0 0 1.7rem;
+  margin:0 0 0 -2.6rem;
 }
 .journey-destination p {
   margin:.25rem 0 0;
@@ -917,7 +917,6 @@ a { color:inherit; text-decoration:none; }
     flex:0 0 auto;
     width:14rem;
     margin-left:-2.275rem;
-    transform:translateX(2.75rem);
   }
   .journey-destination p { margin:0; }
 }
@@ -949,7 +948,7 @@ a { color:inherit; text-decoration:none; }
   margin:0 auto clamp(1.5rem,3svh,2.5rem);
 }
 .project-store .index-heading h2 {
-  font-size:clamp(2rem,3.5vw,3rem);
+  font-size:clamp(1.7rem,2.45vw,2.35rem);
   letter-spacing:-.045em;
 }
 .project-store .index-heading>p:last-child {
@@ -1004,6 +1003,10 @@ a { color:inherit; text-decoration:none; }
   word-break:keep-all;
   overflow-wrap:anywhere;
 }
+.store-meta { display:grid; gap:.2rem; margin-top:.5rem; }
+.store-meta > span { color:#777b82; font-size:.75rem; font-weight:600; line-height:1.35; }
+.store-meta p { margin:0; color:#41464d; font-size:.8125rem; line-height:1.4; }
+.store-meta strong { color:#202328; font-weight:800; }
 .store-scroll {
   grid-column:2;
   justify-self:start;
@@ -1038,7 +1041,7 @@ a { color:inherit; text-decoration:none; }
 
 /* CapSure case study */
 .project-list { grid-template-columns:repeat(3,minmax(0,1fr)); }
-.project-row.is-available { border-color:rgba(243,115,33,.2); }
+.project-row.is-available { border-color:rgba(0,87,184,.2); }
 .project-row.is-available .project-action { cursor:pointer; }
 .project-row.is-coming .project-action b { background:#e8e8ed; color:#6e6e73; box-shadow:none; }
 .project-row.is-coming:hover .project-action b { box-shadow:none; transform:none; }
@@ -1167,7 +1170,7 @@ a { color:inherit; text-decoration:none; }
 }
 .insurance-flow li { position:relative; min-width:0; padding:14px 14px 15px; border-top:2px solid #f2b28b; }
 .insurance-flow li::before { position:absolute; top:-5px; left:0; width:8px; height:8px; border-radius:50%; background:var(--orange); content:""; }
-.insurance-flow li:nth-child(1) { border-color:#f9dfcf; }.insurance-flow li:nth-child(2) { border-color:#f8d2b9; }.insurance-flow li:nth-child(3) { border-color:#f7c3a1; }.insurance-flow li:nth-child(4) { border-color:#f6b286; }.insurance-flow li:nth-child(5) { border-color:#f48e50; }.insurance-flow li:nth-child(6) { border-color:#f37321; }
+.insurance-flow li:nth-child(1) { border-color:#dceafa; }.insurance-flow li:nth-child(2) { border-color:#cbe1f8; }.insurance-flow li:nth-child(3) { border-color:#accff2; }.insurance-flow li:nth-child(4) { border-color:#8fbeec; }.insurance-flow li:nth-child(5) { border-color:#3585d3; }.insurance-flow li:nth-child(6) { border-color:#0057b8; }
 .insurance-flow span { color:var(--orange); font-size:9px; font-weight:850; letter-spacing:.1em; }
 .insurance-flow strong { display:block; margin-top:7px; color:#1d1d1f; font-size:14px; letter-spacing:-.045em; }
 .insurance-flow small { display:block; margin-top:5px; color:#7a7a80; font-size:10px; line-height:1.4; word-break:keep-all; }
@@ -1384,7 +1387,7 @@ a { color:inherit; text-decoration:none; }
 .profile-name { margin-top:18px; color:#fff; font-size:clamp(34px,3.1vw,46px); }
 .profile-role { color:#c6cad3; font-size:15px; }
 .profile-contact { margin-top:auto; padding-top:36px; }
-.profile-contact h2 { padding-bottom:11px; border-bottom-color:#f37321; color:#fff; font-size:14px; letter-spacing:.02em; }
+.profile-contact h2 { padding-bottom:11px; border-bottom-color:#0057b8; color:#fff; font-size:14px; letter-spacing:.02em; }
 .profile-contact dl>div { grid-template-columns:52px minmax(0,1fr); padding:8px 0; color:#d9dce1; font-size:11px; }
 .profile-contact dt { color:#949ba7; }.profile-contact dd { min-width:0; color:#f5f5f7; overflow-wrap:anywhere; }
 .profile-details { align-self:stretch; width:auto; min-height:0; padding:clamp(30px,4.2vw,62px); border-radius:0 28px 28px 0; background:#fff; }
@@ -1416,14 +1419,14 @@ a { color:inherit; text-decoration:none; }
 
 /* 화면을 꽉 채우던 소개 보드를 콘텐츠 높이로 줄입니다. */
 .cover-page { align-content:center; padding-top:clamp(76px,8vw,104px); padding-bottom:clamp(48px,6vw,76px); }
-.brand-logo { top:16px; }.page-number { top:54px; }
+.hanwha-logo { top:16px; }.page-number { top:54px; }
 .profile-intro { padding:clamp(20px,2.4vw,32px); }.photo-slot { width:min(100%,154px); }.profile-name { margin-top:12px; font-size:clamp(26px,2.1vw,32px); }.profile-role { font-size:12px; }.profile-contact { padding-top:20px; }
 .profile-details { padding:clamp(22px,2.8vw,38px); }.profile-details>h1 { max-width:590px; font-size:clamp(25px,2.25vw,34px); line-height:1.32; }.profile-details>h1 .cover-title-follow { margin-left:clamp(1rem,6vw,4rem); }
 .personal-strengths { margin-block:1rem 1.25rem; }.personal-strengths li { grid-template-columns:2.45rem minmax(0,1fr); padding-block:.32rem; }.talent-symbol { width:2.2rem; height:2.2rem; }.personal-strengths h3 { font-size:.86rem; }.personal-strengths p { font-size:.74rem; line-height:1.45; }
 .personal-strengths { margin-block:.7rem .95rem; }.personal-strengths li { grid-template-columns:1.9rem minmax(0,1fr); gap:.55rem; padding-block:.24rem; }.talent-symbol { width:1.7rem; height:1.7rem; }.personal-strengths h3 { font-size:.78rem; line-height:1.35; }.personal-strengths p { margin-top:.1rem; font-size:.68rem; line-height:1.4; }
 .cover-next { position:absolute; bottom:16px; left:50%; display:inline-flex; align-items:center; gap:.4rem; color:#6d737e; font-size:9px; font-weight:800; letter-spacing:.12em; transform:translateX(-50%); }.cover-next svg { color:var(--orange); animation:cover-arrow 1.4s ease-in-out infinite; }
 @keyframes cover-arrow { 50% { transform:translateY(4px); } }
-@media (max-width:760px) { .cover-page { padding-top:66px; padding-bottom:54px; }.brand-logo { top:12px; }.page-number { top:47px; }.profile-intro { padding:24px; }.profile-details { padding:26px 22px; }.profile-details>h1 { font-size:27px; }.profile-details>h1 .cover-title-follow { margin-left:1.15rem; }.cover-next { bottom:16px; } }
+@media (max-width:760px) { .cover-page { padding-top:66px; padding-bottom:54px; }.hanwha-logo { top:12px; }.page-number { top:47px; }.profile-intro { padding:24px; }.profile-details { padding:26px 22px; }.profile-details>h1 { font-size:27px; }.profile-details>h1 .cover-title-follow { margin-left:1.15rem; }.cover-next { bottom:16px; } }
 
 /* 프로필은 오른쪽 소개 보드와 같은 높이로 늘어나지 않는 독립 카드입니다. */
 .cover-page { align-items:start; }
@@ -1503,6 +1506,8 @@ a { color:inherit; text-decoration:none; }
   background:transparent;
 }
 #introduction .profile-details>h1 {
+  display:grid;
+  grid-template-columns:max-content max-content minmax(0,1fr);
   max-width:720px;
   margin:0;
   color:#1c1d20;
@@ -1512,49 +1517,47 @@ a { color:inherit; text-decoration:none; }
   line-height:1.24;
 }
 #introduction .profile-details>h1>span { display:block; }
+#introduction .profile-details>h1 .cover-title-leading { grid-column:1; grid-row:1; }
+#introduction .profile-details>h1 .cover-title-anchor { grid-column:2; grid-row:1; }
+#introduction .profile-details>h1 .cover-title-suffix { grid-column:3; grid-row:1; }
 #introduction .profile-details>h1 .cover-title-follow {
+  grid-column:2 / -1;
+  grid-row:2;
   width:max-content;
   max-width:100%;
-  margin:7px 0 0 clamp(18px,5vw,78px);
+  margin:7px 0 0;
 }
 #introduction .profile-details>h1 em { color:var(--orange); }
-#introduction .profile-details>h1 em.title-blue { color:#0a4b9e; }
 #introduction .personal-strengths {
   max-width:none;
   margin:clamp(30px,4.2vh,46px) 0 clamp(28px,3.6vh,40px);
-  padding:0;
+  padding:10px;
   border:0;
-  border-radius:0;
-  background:transparent;
+  border-radius:16px;
+  background:#1d1d1f;
 }
 #introduction .personal-strengths ol {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:10px;
+  gap:0;
   margin:0;
   padding:0;
 }
 #introduction .personal-strengths li {
-  position:relative;
-  display:block;
-  min-height:174px;
-  padding:clamp(20px,2vw,30px);
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr);
+  align-items:center;
+  gap:12px;
+  min-height:104px;
+  padding:14px clamp(14px,1.7vw,24px);
   border:0;
-  border-radius:0;
-  overflow:hidden;
+  border-left:1px solid rgba(255,255,255,.16);
 }
-#introduction .personal-strengths li:first-child { padding-left:clamp(14px,1.7vw,24px); }
-#introduction .personal-strengths li:nth-child(1) { background:#ffb81c; }
-#introduction .personal-strengths li:nth-child(2) { background:#009a44; }
-#introduction .personal-strengths li:nth-child(3) { background:#0a4b9e; }
-#introduction .personal-strengths li::after { position:absolute; left:clamp(20px,2vw,30px); bottom:clamp(12px,1.3vw,20px); z-index:0; color:rgba(255,255,255,.34); content:attr(data-word); font-size:clamp(25px,2.45vw,42px); font-weight:300; letter-spacing:-.075em; line-height:1; }
-#introduction .strength-marker { position:absolute; right:clamp(20px,2vw,30px); bottom:clamp(18px,1.7vw,26px); z-index:1; margin:0; }
-#introduction .talent-symbol { display:grid; place-items:center; width:52px; height:52px; border:0; border-radius:0; background:transparent; }
-#introduction .talent-symbol img { display:block; width:100%; height:100%; object-fit:contain; }
-#introduction .personal-strengths li>div:last-child { position:relative; z-index:1; }
-#introduction .personal-strengths h3 { margin:0; color:#fff; font-size:clamp(26px,2.25vw,36px); font-weight:780; letter-spacing:-.08em; line-height:1.1; }
-#introduction .personal-strengths li:nth-child(2) h3 { font-size:clamp(24px,2vw,32px); }
-#introduction .personal-strengths p { max-width:260px; margin:11px 0 0; color:rgba(255,255,255,.9); font-size:clamp(11px,.9vw,13px); font-weight:620; letter-spacing:-.05em; line-height:1.55; word-break:keep-all; }
+#introduction .personal-strengths li:first-child { padding-left:clamp(14px,1.7vw,24px); border-left:0; }
+#introduction .strength-marker { margin:0; }
+#introduction .talent-symbol { width:30px; height:30px; }
+#introduction .personal-strengths h3 { margin:0; color:#fff; font-size:clamp(13px,1.05vw,15px); font-weight:780; letter-spacing:-.055em; line-height:1.35; }
+#introduction .personal-strengths p { margin:5px 0 0; color:#c9cbd0; font-size:clamp(10px,.8vw,11px); font-weight:560; letter-spacing:-.04em; line-height:1.55; word-break:keep-all; }
 #introduction .cover-secondary {
   display:grid;
   grid-template-columns:minmax(0,1.05fr) minmax(290px,.95fr);
@@ -1581,14 +1584,16 @@ a { color:inherit; text-decoration:none; }
 #introduction .cover-info-panel .journey-skill img { width:16px; height:16px; }
 #introduction .cover-info-panel .journey-skill-meter { gap:3px; align-self:center; }
 #introduction .cover-info-panel .journey-skill-meter i { height:3px; border-radius:0; }
-#introduction .brand-logo { top:clamp(20px,2.6vw,42px); right:clamp(38px,6.8vw,112px); width:142px; height:42px; }
+#introduction .hanwha-logo { top:clamp(20px,2.6vw,42px); right:clamp(38px,6.8vw,112px); width:142px; height:42px; }
 #introduction .page-number { top:clamp(58px,5.3vw,84px); right:clamp(39px,6.9vw,114px); color:var(--orange); font-size:11px; }
 #introduction .cover-next { bottom:clamp(18px,2.4vw,34px); color:#777b83; font-size:9px; }
 
 @media (max-width:900px) and (min-width:761px) {
   #introduction.cover-page { grid-template-columns:190px minmax(0,1fr); column-gap:34px; padding-inline:38px; }
-  #introduction .profile-details>h1 { font-size:30px; }
-  #introduction .personal-strengths li { min-height:174px; padding-inline:14px; }
+  #introduction .profile-details>h1 { display:block; font-size:30px; }
+  #introduction .profile-details>h1 .cover-title-leading,#introduction .profile-details>h1 .cover-title-suffix { display:inline; }
+  #introduction .profile-details>h1 .cover-title-follow { margin-left:25px; }
+  #introduction .personal-strengths li { min-height:128px; padding-inline:14px; }
   #introduction .personal-strengths p { font-size:10px; }
   #introduction .cover-info-panel.journey-awards { padding-right:18px; }
   #introduction .cover-info-panel.journey-skills { padding-left:18px; }
@@ -1604,50 +1609,335 @@ a { color:inherit; text-decoration:none; }
   #introduction .profile-contact dl { display:flex; flex-direction:column; gap:3px; }
   #introduction .profile-contact dl>div { padding:0; }
   #introduction .profile-details { padding:36px 0 0; }
-  #introduction .profile-details>h1 { font-size:30px; }
+  #introduction .profile-details>h1 { display:block; font-size:30px; }
+  #introduction .profile-details>h1 .cover-title-leading,#introduction .profile-details>h1 .cover-title-suffix { display:inline; }
   #introduction .profile-details>h1 .cover-title-follow { margin-left:25px; }
-  #introduction .personal-strengths { margin:30px 0; padding:0; }
+  #introduction .personal-strengths { margin:30px 0; padding:8px; }
   #introduction .personal-strengths ol { grid-template-columns:1fr; }
-  #introduction .personal-strengths li,#introduction .personal-strengths li:first-child { display:block; min-height:152px; padding:20px; border-left:0; border-top:0; }
-  #introduction .personal-strengths li::after { left:20px; bottom:14px; font-size:38px; }
-  #introduction .strength-marker { right:20px; bottom:18px; }
+  #introduction .personal-strengths li,#introduction .personal-strengths li:first-child { display:grid; grid-template-columns:34px minmax(0,1fr); min-height:0; gap:12px; padding:14px; border-left:0; border-top:1px solid rgba(255,255,255,.16); }
+  #introduction .personal-strengths li:first-child { border-top:0; }
   #introduction .strength-marker { margin:0; }
   #introduction .cover-secondary { grid-template-columns:1fr; }
   #introduction .cover-info-panel.journey-awards { padding-right:0; }
   #introduction .cover-info-panel.journey-skills { margin-top:18px; padding:18px 0 0; border-top:1px solid var(--cover-rule); border-left:0; }
-  #introduction .brand-logo { top:15px; right:24px; width:116px; height:34px; }
+  #introduction .hanwha-logo { top:15px; right:24px; width:116px; height:34px; }
   #introduction .page-number { top:47px; right:24px; }
 }
 
-/* 현대엘리베이터 팔레트로 여정의 진행색을 통일합니다. */
-#journey .journey-item { --line-color:#dbe9f6; }
-#journey .journey-item:nth-child(2) { --line-color:#b9d9f1; }
-#journey .journey-item:nth-child(3) { --line-color:#87bfe8; }
-#journey .journey-item:nth-child(4) { --line-color:#4f91d2; }
-#journey .journey-item:nth-child(5) { --line-color:#0a4b9e; }
-#journey .journey-item:nth-child(6) { --line-color:#087e70; }
-#journey .journey-item:nth-child(7) { --line-color:#009a44; }
-#journey .journey-item:nth-child(8) { --line-color:#70b92f; }
-#journey .journey-item:nth-child(9) { --line-color:#ffb81c; }
-#journey .journey-track::before { background:linear-gradient(to bottom,#dbe9f6 0%,#4f91d2 40%,#009a44 72%,#ffb81c 100%) !important; }
-#journey .journey-item::after,
-#journey .journey-item:nth-child(odd)::after,
-#journey .journey-item:nth-child(even)::after { background:var(--line-color); }
-#journey .journey-date { color:#0a4b9e !important; }
-#journey .journey-dot.default-node { color:#0a4b9e; background:#0a4b9e; }
-#journey .journey-dot.education-node { color:#4f91d2; background:#4f91d2; }
-#journey .journey-dot.ssafy-node { color:#009a44; background:#009a44; }
-#journey .journey-dot.finance-campus-node { color:#ffb81c; background:#ffb81c; }
-#journey .education-study::before,
-#journey .exchange-study::before,
-#journey .dongguk-university::before { background:#dbe9f6; }
-#journey .ssafy-campus::before { background:#cdeedb; }
-#journey .finance-campus::before { background:#ffe184; }
+/* 프로필 표지는 사진·메시지의 두 면과 하단 인재상으로 구성합니다. */
+#introduction.cover-page {
+  --cover-rule:rgba(255,255,255,.2);
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  grid-template-rows:minmax(0,1fr) auto;
+  column-gap:clamp(2rem,5vw,5rem);
+  align-items:stretch;
+  min-height:100svh;
+  padding:clamp(5.5rem,9vh,7rem) clamp(2rem,6vw,6rem) clamp(2rem,5vh,3.5rem);
+  background:#1d1d1f;
+  color:#fff;
+}
+#introduction .profile-intro {
+  grid-column:1;
+  grid-row:1;
+  align-self:stretch;
+  justify-content:center;
+  padding:0 clamp(1.5rem,4vw,4rem) 1.25rem 0;
+  border-right:1px solid var(--cover-rule);
+  border-bottom:0;
+  color:#fff;
+}
+#introduction .photo-slot { width:min(100%,clamp(190px,21vw,310px)); }
+#introduction .photo-slot img { filter:drop-shadow(0 14px 22px rgba(0,0,0,.32)); }
+#introduction .profile-name { color:#fff; font-size:clamp(1.7rem,2.4vw,2.35rem); }
+#introduction .profile-role,#introduction .profile-contact dd { color:#c9cbd0; }
+#introduction .profile-contact { margin-top:1.25rem; padding-top:1rem; }
+#introduction .profile-contact::before { border-color:var(--cover-rule); }
+#introduction .profile-contact a svg { color:#d8dade; }
+#introduction .profile-contact a img { filter:brightness(0) invert(1); opacity:.85; }
+#introduction .profile-details { grid-column:2; grid-row:1; align-self:center; }
+#introduction .profile-details>h1 { max-width:760px; color:#fff; font-size:clamp(2.1rem,3.55vw,3.65rem); line-height:1.2; }
+#introduction .personal-strengths {
+  grid-column:1 / -1;
+  grid-row:2;
+  align-self:end;
+  margin:clamp(1.5rem,4vh,2.5rem) 0 0;
+  padding:.5rem 0 0;
+  border-top:1px solid var(--cover-rule);
+  border-radius:0;
+  background:transparent;
+}
+#introduction .personal-strengths li { min-height:7.25rem; padding:1rem clamp(1rem,2vw,2rem); }
+#introduction .personal-strengths h3 { font-size:clamp(.9rem,1.25vw,1.08rem); }
+#introduction .personal-strengths p { font-size:clamp(.75rem,.95vw,.86rem); }
+#introduction .hanwha-logo img { filter:brightness(0) invert(1); }
+#introduction .page-number { color:#6fa9e3; }
+#introduction .cover-next { color:#c4c6cb; }
 
-/* Project Store는 기존 레이아웃을 유지하고 구분선만 브랜드 색으로 바꿉니다. */
-.project-store .store-item:nth-child(2)::before { background:#0a4b9e; }
-.project-store .store-item:nth-child(3)::before { background:#009a44; }
-.project-store .store-item:nth-child(4)::before { background:#ffb81c; }
+/* 세 번째 프로필 페이지: 수상 내용과 기술을 설명 가능한 크기로 분리합니다. */
+.profile-record-page {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:100svh;
+  padding:clamp(5.5rem,9vh,7rem) clamp(2rem,8vw,8rem) clamp(2.5rem,5vh,4rem);
+  background:#f8f8f6;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+}
+.profile-record-heading { width:min(100%,76rem); margin:0 auto clamp(1.5rem,3vh,2.5rem); }
+.profile-record-heading .eyebrow { margin-bottom:.6rem; }
+.profile-record-heading h2 { margin:0; color:#1d1d1f; font-size:clamp(1.7rem,2.45vw,2.35rem); font-weight:780; letter-spacing:-.045em; line-height:1.3; word-break:keep-all; text-wrap:balance; }
+.profile-record-heading>p:last-child { max-width:55rem; margin:.75rem 0 0; color:#5f636a; font-size:clamp(.95rem,1.23vw,1.07rem); line-height:1.65; word-break:keep-all; }
+.profile-record-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.9fr); gap:clamp(2.5rem,6vw,6rem); width:min(100%,76rem); margin:0 auto; }
+.profile-record-history { display:grid; align-content:start; gap:1.5rem; }
+.profile-record-grid h3 { margin:0 0 .65rem; padding-bottom:.6rem; border-bottom:1px solid #d4d5d6; color:#222429; font-size:clamp(1.1rem,1.45vw,1.35rem); font-weight:800; }
+.profile-award-list,.profile-certificate-list,.profile-skill-group ul { margin:0; padding:0; list-style:none; }
+.profile-award-list > li { display:grid; grid-template-columns:4.5rem minmax(0,1fr); gap:.85rem; padding:.65rem 0; border-bottom:1px solid #e3e3e1; }
+.profile-award-list time,.profile-certificate-list time { color:#7c838b; font-size:.8rem; font-weight:750; white-space:nowrap; }
+.profile-award-list strong { display:block; color:#282b30; font-size:clamp(.92rem,1.15vw,1.08rem); line-height:1.35; }
+.profile-award-list span { display:block; margin-top:.18rem; color:#81858c; font-size:.75rem; }
+.profile-award-description { margin:.42rem 0 0; padding-left:1.1rem; color:#555a62; font-size:clamp(.82rem,1vw,.92rem); line-height:1.45; word-break:keep-all; list-style:disc; }
+.profile-award-description li::marker { color:var(--orange); }
+.profile-certificate-list li { display:grid; grid-template-columns:4.5rem minmax(0,1fr) auto; align-items:baseline; gap:.85rem; padding:.43rem 0; border-bottom:1px solid #e3e3e1; }
+.profile-certificate-list strong { color:#30343a; font-size:clamp(.86rem,1vw,.96rem); font-weight:720; }
+.profile-certificate-list span { color:#858a90; font-size:.74rem; white-space:nowrap; }
+.profile-skill-group { display:grid; grid-template-columns:7.5rem minmax(0,1fr); gap:1.25rem; align-items:start; padding:.82rem 0; border-bottom:1px solid #e3e3e1; }
+.profile-skill-group h4 { margin:.35rem 0 0; color:#797d84; font-size:.76rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; }
+.profile-skill-group ul { display:flex; flex-wrap:wrap; gap:.45rem; }
+.profile-skill-group li { padding:.4rem .7rem; border:1px solid #dedfdf; border-radius:999px; background:#fff; color:#343940; font-size:clamp(.82rem,.95vw,.93rem); font-weight:650; line-height:1.25; white-space:nowrap; }
+@media (max-width:900px) {
+  #introduction.cover-page { column-gap:2rem; }
+  #introduction .profile-details>h1 { display:block; font-size:clamp(2rem,4vw,2.7rem); }
+  #introduction .profile-details>h1 .cover-title-leading,#introduction .profile-details>h1 .cover-title-suffix { display:inline; }
+  #introduction .profile-details>h1 .cover-title-follow { margin-left:0; }
+  .profile-record-grid { gap:2rem; }
+  .profile-certificate-list li { grid-template-columns:4.5rem minmax(0,1fr); }
+  .profile-certificate-list span { grid-column:2; }
+}
+@media (max-width:760px) {
+  #introduction.cover-page { display:grid; grid-template-columns:1fr; grid-template-rows:auto auto auto; min-height:100svh; padding:4.8rem 1.5rem 3rem; }
+  #introduction .profile-intro { grid-column:1; grid-row:1; padding:0 0 1.25rem; border-right:0; border-bottom:1px solid var(--cover-rule); }
+  #introduction .photo-slot { width:min(48vw,180px); }
+  #introduction .profile-contact { margin-top:.75rem; padding:0; }
+  #introduction .profile-details { grid-column:1; grid-row:2; padding:1.6rem 0 0; }
+  #introduction .profile-details>h1 { font-size:clamp(1.8rem,6vw,2.25rem); }
+  #introduction .personal-strengths { grid-column:1; grid-row:3; margin-top:1.7rem; }
+  #introduction .personal-strengths ol { grid-template-columns:1fr; }
+  #introduction .personal-strengths li,#introduction .personal-strengths li:first-child { min-height:0; padding:.7rem 0; border-top:1px solid var(--cover-rule); }
+  #introduction .personal-strengths li:first-child { border-top:0; }
+  #introduction .personal-strengths h3 { font-size:.92rem; }
+  #introduction .personal-strengths p { font-size:.78rem; }
+  .profile-record-page { padding:5.25rem 1.5rem 3rem; }
+  .profile-record-grid { grid-template-columns:1fr; gap:2rem; }
+  .profile-record-heading { margin-bottom:1.4rem; }
+  .profile-record-history { gap:1.5rem; }
+  .profile-skill-group { grid-template-columns:6.5rem minmax(0,1fr); gap:.75rem; }
+}
 
-/* 영문 워터마크는 세 카드에서 같은 크기로 맞춥니다. */
-#introduction .personal-strengths li::after { font-size:clamp(22px,1.75vw,30px); }
+/* 표지는 사진 영역을 밝게, 메시지와 일하는 기준을 어둡게 나눕니다. */
+#introduction.cover-page {
+  grid-template-columns:minmax(0,42%) minmax(0,58%);
+  grid-template-rows:minmax(100svh,auto);
+  gap:0;
+  padding:0;
+  background:#1d1d1f;
+}
+#introduction .profile-intro {
+  grid-column:1;
+  grid-row:1;
+  align-self:stretch;
+  min-height:100svh;
+  padding:clamp(5.5rem,9vh,7rem) clamp(2rem,4vw,5rem) clamp(3rem,5vh,4rem);
+  border:0;
+  background:#fbfbf9;
+  color:#202124;
+}
+#introduction .photo-slot { width:min(100%,clamp(200px,23vw,320px)); }
+#introduction .photo-slot img { filter:drop-shadow(0 12px 18px rgba(25,28,34,.12)); }
+#introduction .profile-name { color:#1d1d1f; }
+#introduction .profile-role,#introduction .profile-contact dd { color:#61666e; }
+#introduction .profile-contact::before { border-color:#c7cbd0; }
+#introduction .profile-contact a svg { color:#343940; }
+#introduction .profile-contact a img { filter:none; opacity:1; }
+#introduction .profile-details {
+  grid-column:2;
+  grid-row:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-self:stretch;
+  min-height:100svh;
+  padding:clamp(6.5rem,10vh,8rem) clamp(3rem,5vw,6rem) clamp(4.5rem,7vh,6rem);
+}
+#introduction .profile-details>h1 { display:grid; grid-template-columns:max-content minmax(0,1fr); column-gap:.2em; max-width:none; font-size:clamp(2rem,3.4vw,3.45rem); line-height:1.24; }
+#introduction .profile-details>h1 .cover-title-prefix { grid-column:1; grid-row:1; }
+#introduction .profile-details>h1 .cover-title-top { grid-column:2; grid-row:1; white-space:nowrap; }
+#introduction .profile-details>h1 .cover-title-follow { grid-column:2; grid-row:2; display:block; width:auto; min-width:0; margin:.12em 0 0; padding-left:.92em; }
+#introduction .cover-title-highlight { position:relative; isolation:isolate; display:inline-block; white-space:nowrap; }
+#introduction .profile-details>h1 .cover-title-highlight em { color:#fff; }
+#introduction .cover-title-highlight::after {
+  position:absolute;
+  z-index:-1;
+  right:-.06em;
+  bottom:-.03em;
+  left:-.06em;
+  height:.78em;
+  background:url('/assets/hero-orange-marker.webp') center / 100% 100% no-repeat;
+  content:"";
+  opacity:.9;
+  clip-path:inset(0 100% 0 0);
+  animation:cover-marker-swipe .5s .12s cubic-bezier(.2,.72,.2,1) forwards;
+}
+@keyframes cover-marker-swipe { to { clip-path:inset(0 0 0 0); } }
+@media (prefers-reduced-motion:reduce) { #introduction .cover-title-highlight::after { animation:none; clip-path:inset(0 0 0 0); } }
+#introduction .personal-strengths { width:100%; margin:clamp(2rem,5vh,3.5rem) 0 0; padding:.8rem 0 0; border-top:1px solid var(--cover-rule); }
+#introduction .personal-strengths ol { grid-template-columns:1fr; }
+#introduction .personal-strengths li,#introduction .personal-strengths li:first-child {
+  grid-template-columns:38px minmax(0,1fr);
+  align-items:center;
+  gap:1rem;
+  min-height:0;
+  padding:1rem 0;
+  border-left:0;
+  border-top:1px solid var(--cover-rule);
+}
+#introduction .personal-strengths li:first-child { border-top:0; }
+#introduction .talent-symbol { width:38px; height:38px; }
+#introduction .personal-strengths h3 { font-size:clamp(.95rem,1.16vw,1.06rem); font-weight:760; }
+#introduction .personal-strengths p { margin-top:.3rem; font-size:clamp(.78rem,.94vw,.88rem); line-height:1.5; }
+#introduction .hanwha-logo { right:clamp(2rem,5vw,6rem); }
+#introduction .page-number { right:clamp(2rem,5vw,6rem); }
+#introduction .cover-next { left:71%; right:auto; gap:.7rem; font-size:12px; font-weight:600; transform:translateX(-50%); }
+#introduction .cover-next svg { width:20px; height:34px; }
+
+/* 기술별 상대적 활용 수준은 작은 지표로, 단계 설명은 열어 볼 때만 표시합니다. */
+.profile-skill-explainer { position:relative; display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:.2rem 0 .5rem; }
+.profile-skill-note { margin:0; color:#7a7f86; font-size:.75rem; line-height:1.4; }
+.profile-skill-criteria { position:relative; flex:0 0 auto; }
+.profile-skill-criteria button { display:inline-flex; align-items:center; gap:.4rem; min-height:2rem; padding:.32rem .65rem; border:1px solid #9ec5ec; border-radius:999px; background:#fff; cursor:pointer; color:var(--orange); font:inherit; font-size:.73rem; font-weight:750; white-space:nowrap; transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease; }
+.profile-skill-criteria button:hover { border-color:var(--orange); background:#eef5fc; box-shadow:0 2px 8px #0057b81c; }
+.profile-skill-criteria[data-open="true"] button { border-color:var(--orange); background:#eef5fc; }
+.profile-skill-criteria-chevron { transition:transform .18s ease; }
+.profile-skill-criteria[data-open="true"] .profile-skill-criteria-chevron { transform:rotate(180deg); }
+.profile-skill-criteria button:focus-visible { outline:2px solid var(--orange); outline-offset:3px; }
+.profile-skill-criteria[data-open="true"] ol { position:absolute; top:calc(100% + .5rem); right:0; z-index:5; width:min(27rem,86vw); margin:0; padding:.65rem .85rem; border:1px solid #edd6c8; border-radius:.6rem; background:#fff; box-shadow:0 .8rem 2rem #17191c21; list-style:none; }
+.profile-skill-criteria li { display:grid; grid-template-columns:4.6rem 3.7rem minmax(0,1fr); align-items:center; gap:.65rem; padding:.46rem 0; color:#525960; font-size:.74rem; line-height:1.35; }
+.profile-skill-criteria li+li { border-top:1px solid #f1e8e2; }
+.profile-skill-criteria li strong { color:#292d32; white-space:nowrap; }
+.profile-skill-criteria-meter { display:flex; gap:3px; }
+.profile-skill-criteria-meter i { display:block; width:9px; height:11px; background:#ebe2dc; }
+.profile-skill-criteria-meter i.is-filled { background:var(--orange); }
+.profile-skill-group ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.35rem .5rem; }
+.profile-skill-group li { display:flex; align-items:center; justify-content:space-between; gap:.4rem; min-width:0; padding:.38rem .55rem; border-radius:.38rem; font-size:clamp(.76rem,.85vw,.88rem); }
+.profile-skill-label { display:inline-flex; align-items:center; gap:.35rem; min-width:0; }
+.profile-skill-label img { flex:0 0 auto; display:block; width:1rem; height:1rem; object-fit:contain; }
+.profile-skill-meter { display:flex; flex:0 0 auto; gap:2px; }
+.profile-skill-meter i { display:block; width:5px; height:9px; border-radius:1px; background:#e9ded7; }
+.profile-skill-meter i.is-filled { background:var(--orange); }
+.profile-skill-accessible { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+@media (max-width:900px) {
+  #introduction .profile-details { padding-inline:clamp(2rem,4vw,3rem); }
+  #introduction .profile-details>h1 { font-size:clamp(2rem,4vw,2.8rem); }
+}
+@media (max-width:760px) {
+  #introduction.cover-page { grid-template-columns:1fr; grid-template-rows:auto auto; min-height:100svh; }
+  #introduction .profile-intro { grid-column:1; grid-row:1; min-height:0; padding:5rem 1.5rem 2.25rem; }
+  #introduction .photo-slot { width:min(48vw,180px); }
+  #introduction .profile-details { grid-column:1; grid-row:2; min-height:0; padding:2.6rem 1.5rem 4.75rem; }
+  #introduction .profile-details>h1 { font-size:clamp(1.8rem,6vw,2.25rem); }
+  #introduction .profile-details>h1 .cover-title-follow { padding-left:0; word-break:keep-all; }
+  #introduction .personal-strengths { margin-top:2rem; }
+  #introduction .personal-strengths h3 { font-size:.94rem; }
+  #introduction .personal-strengths p { font-size:.8rem; }
+  #introduction .hanwha-logo img { filter:none; }
+  #introduction .cover-next { left:50%; right:auto; }
+  .profile-skill-group ul { grid-template-columns:1fr; }
+  .profile-skill-group { grid-template-columns:1fr; gap:.45rem; }
+  .profile-skill-group h4 { margin:0; }
+  .profile-skill-criteria[data-open="true"] ol { right:0; width:min(27rem,calc(100vw - 3rem)); }
+}
+@media (max-width:420px) {
+  .profile-skill-criteria li { grid-template-columns:4.6rem minmax(0,1fr); gap:.28rem .65rem; }
+  .profile-skill-criteria-description { grid-column:1 / -1; }
+}
+
+/* Profile and project index use one label scale across desktop sections. */
+.journey-heading .section-kicker,
+.profile-record-heading .section-kicker,
+.project-store .index-heading .section-kicker {
+  margin:0 0 .55rem;
+  color:var(--orange);
+  font-size:.75rem;
+  font-weight:800;
+  line-height:1.25;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+@media (min-width:901px) {
+  #introduction .profile-intro { padding-top:clamp(4rem,7svh,5rem); }
+  .journey-page { min-height:100dvh; padding-block:clamp(1.25rem,3.5svh,2.5rem); }
+  .profile-record-page {
+    min-height:100dvh;
+    padding-top:clamp(3.5rem,7svh,5.5rem);
+    padding-bottom:clamp(1.5rem,3svh,2.5rem);
+  }
+}
+
+@media (min-width:901px) and (max-width:1100px) {
+  .journey-page { padding-block:1rem; }
+  .journey-heading { margin-bottom:1rem; }
+  .profile-record-grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:2rem; }
+  .profile-skill-group { grid-template-columns:5.5rem minmax(0,1fr); gap:.5rem; }
+}
+
+@media (min-width:901px) and (max-height:680px) {
+  #introduction .photo-slot { width:min(100%,12.5rem); }
+  .journey-page { padding-block:1rem; }
+  .journey-heading { margin-bottom:.5rem; }
+  .journey-item { min-height:clamp(2.2rem,5.2svh,3rem); }
+  .journey-item:nth-child(-n+5),.journey-item:nth-child(n+6) { min-height:clamp(2.2rem,5.2svh,3rem); }
+  .journey-page .journey-item { padding-bottom:0; }
+  .profile-record-page { padding-top:2.25rem; padding-bottom:.75rem; }
+  .profile-record-heading { margin-bottom:1rem; }
+  .profile-record-heading>p:last-child { line-height:1.45; }
+  .profile-record-history { gap:.65rem; }
+  .profile-award-list>li { padding:.35rem 0; }
+  .profile-certificate-list li { padding:.25rem 0; }
+  .profile-skill-group { padding:.4rem 0; }
+}
+
+@media (min-width:901px) and (max-height:800px) {
+  .journey-heading { margin-bottom:.5rem; }
+  .profile-record-page { padding-top:1.5rem; padding-bottom:.65rem; }
+  .profile-record-heading { margin-bottom:1rem; }
+  .profile-record-heading>p:last-child { line-height:1.5; }
+  .profile-record-history { gap:1rem; }
+}
+@media (min-width:901px) and (max-width:1100px) and (min-height:681px) {
+  .journey-item,.journey-item:nth-child(-n+5),.journey-item:nth-child(n+6) { min-height:3.5rem; }
+}
+@media (min-width:901px) and (max-height:620px) {
+  #introduction.cover-page { padding:0; }
+  #introduction .profile-intro,#introduction .profile-details { padding-top:2rem; padding-bottom:1.5rem; }
+  .journey-page { padding-block:.5rem; }
+  .journey-map { zoom:.9; width:calc(100% / .9); }
+  .profile-record-page { padding-top:.8rem; padding-bottom:.25rem; }
+  .profile-record-heading,.profile-record-grid { zoom:.87; width:calc(100% / .87); }
+  .project-store { padding-block:.5rem; }
+  .project-store .index-heading { margin-bottom:.35rem; }
+  .store-list { gap:.25rem; }
+  .store-item { padding:0; }
+}
+
+/* 기업별 브랜딩: 원본 레이아웃은 유지하고 로고와 보조 톤만 교체합니다. */
+#introduction .hanwha-logo { box-sizing:border-box; padding:0; border-radius:0; background:transparent; }
+#introduction .hanwha-logo img { filter:none; }
+.journey-dot { -webkit-mask:none !important; mask:none !important; border-radius:50%; }
+.journey-destination img { object-fit:contain; }
+.profile-record-page { background:#f5f8fc; }
+#introduction .cover-title-highlight::after { filter:hue-rotate(185deg) saturate(1.2); }
+#introduction .talent-symbol img { filter:none; opacity:1; }
+#introduction .page-number { top:clamp(76px,6.4vw,100px); }
+@media (max-width:760px) { #introduction .page-number { top:50px; } }
