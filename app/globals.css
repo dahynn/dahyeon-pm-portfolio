@@ -724,16 +724,9 @@ a { color:inherit; text-decoration:none; }
   .profile-values img { width:54px; height:54px; }
 }
 
-/* 여정선 마감: 작은 지점과 한화 오렌지로 짙어지는 흐름 */
-.journey-item { --line-color:#dceafa; }
-.journey-item:nth-child(2) { --line-color:#cbe1f8; }
-.journey-item:nth-child(3) { --line-color:#f8cab0; }
-.journey-item:nth-child(4) { --line-color:#accff2; }
-.journey-item:nth-child(5) { --line-color:#8fbeec; }
-.journey-item:nth-child(6) { --line-color:#f5a06a; }
-.journey-item:nth-child(7) { --line-color:#3585d3; }
-.journey-item:nth-child(8) { --line-color:#f47f3a; }
-.journey-item:nth-child(9) { --line-color:#0057b8; }
+/* 현대 여정: 시작의 노랑에서 도착의 초록으로 이어지는 하나의 선 */
+.journey-item { --line-color:#ffb81c; }
+.journey-item:nth-child(n+5) { --line-color:#009a44; }
 .journey-dot {
   margin:0;
   padding:0;
@@ -762,7 +755,7 @@ a { color:inherit; text-decoration:none; }
 
 @media (min-width:761px) {
   .journey-track::before {
-    background:linear-gradient(to bottom,#dceafa 0%,#accff2 38%,#6ba6e0 70%,#0057b8 100%);
+    background:linear-gradient(to bottom,#ffb81c 0 46%,#e1b72d 52%,#009a44 60% 100%);
   }
   .journey-item::after,
   .journey-item:nth-child(odd)::after,
