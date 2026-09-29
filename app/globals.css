@@ -1820,6 +1820,24 @@ a { color:inherit; text-decoration:none; }
 #introduction .cover-next { left:71%; right:auto; gap:.7rem; font-size:12px; font-weight:600; transform:translateX(-50%); }
 #introduction .cover-next svg { width:20px; height:34px; }
 
+/* 현대엘리베이터의 표지에는 노랑에서 초록으로 이어지는 단정한 이동 경로만 남깁니다. */
+#introduction .profile-details { isolation:isolate; overflow:hidden; }
+#introduction .profile-details::before,
+#introduction .profile-details::after { position:absolute; z-index:-1; pointer-events:none; content:""; }
+#introduction .profile-details::before {
+  top:50%; right:-14rem; width:37rem; height:37rem; border:1px solid rgba(0,154,68,.25); border-radius:50%;
+  box-shadow:0 0 0 3.2rem rgba(255,184,28,.045),0 0 0 7rem rgba(0,154,68,.025);
+  transform:translateY(-50%);
+}
+#introduction .profile-details::after {
+  right:-4.8rem; bottom:3rem; width:31rem; height:8.5rem; opacity:.62;
+  background:linear-gradient(90deg,rgba(255,184,28,.12),rgba(255,184,28,.42) 43%,rgba(0,154,68,.48) 58%,rgba(0,154,68,.12));
+  clip-path:polygon(0 78%,42% 9%,100% 41%,100% 55%,42% 22%,0 91%);
+}
+#introduction .profile-details>h1,
+#introduction .profile-details>.personal-strengths { position:relative; z-index:1; }
+@media (max-width:760px) { #introduction .profile-details::before,#introduction .profile-details::after { display:none; } }
+
 /* 기술별 상대적 활용 수준은 작은 지표로, 단계 설명은 열어 볼 때만 표시합니다. */
 .profile-skill-explainer { position:relative; display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:.2rem 0 .5rem; }
 .profile-skill-note { margin:0; color:#7a7f86; font-size:.75rem; line-height:1.4; }
