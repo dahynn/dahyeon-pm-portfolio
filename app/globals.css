@@ -1974,6 +1974,7 @@ a { color:inherit; text-decoration:none; }
 .journey-destination img { object-fit:contain; }
 .profile-record-page { background:#f5f8fc; }
 #introduction .cover-title-highlight::after { filter:hue-rotate(185deg) saturate(1.2); }
-#introduction .talent-symbol img { filter:none; opacity:1; }
+#introduction .talent-symbol { overflow:visible; }
+#introduction .talent-symbol img { position:static; display:block; width:100%; height:100%; max-width:100%; filter:none; opacity:1; object-fit:contain; transform:none; }
 #introduction .page-number { top:clamp(76px,6.4vw,100px); }
 @media (max-width:760px) { #introduction .page-number { top:50px; } }
