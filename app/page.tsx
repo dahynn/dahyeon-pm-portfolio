@@ -141,13 +141,12 @@ export default function Home() {
               />
               <p className="journey-date">{activity.date}</p>
               <div className="journey-copy">
-                <strong className={
-                  activity.education ? 'education-study'
-                    : activity.title === '동국대학교' ? 'dongguk-university'
-                    : activity.title === 'University of Lancashire' ? 'exchange-study'
-                      : activity.title === '삼성청년SW·AI 아카데미 14기' ? 'ssafy-campus'
-                        : undefined
-                }>{activity.title}</strong>
+                <strong className={[
+                  "IT 소모임장 'ProMIS'",
+                  'GDSC(Google Developer Student Clubs) 1기',
+                  '구름톤 유니브 4기',
+                  '삼성청년SW·AI 아카데미 14기',
+                ].includes(activity.title) ? 'pm-journey-highlight' : undefined}>{activity.title}</strong>
                 {'gpa' in activity && <span className="journey-gpa" aria-label={`학점 ${activity.gpa}`}>GPA {activity.gpa}</span>}
                 <p>{activity.detail}</p>
               </div>
