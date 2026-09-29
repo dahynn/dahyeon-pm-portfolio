@@ -145,9 +145,8 @@ export default function Home() {
                   activity.education ? 'education-study'
                     : activity.title === '동국대학교' ? 'dongguk-university'
                     : activity.title === 'University of Lancashire' ? 'exchange-study'
-                      : activity.title === '한화금융캠퍼스 15기' ? 'hanwha-campus'
-                        : activity.title === '삼성청년SW·AI 아카데미 14기' ? 'ssafy-campus'
-                          : undefined
+                      : activity.title === '삼성청년SW·AI 아카데미 14기' ? 'ssafy-campus'
+                        : undefined
                 }>{activity.title}</strong>
                 {'gpa' in activity && <span className="journey-gpa" aria-label={`학점 ${activity.gpa}`}>GPA {activity.gpa}</span>}
                 <p>{activity.detail}</p>
